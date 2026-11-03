@@ -1,0 +1,449 @@
+# SPEC.md — US Aviation Data Pipeline 2025
+
+## 1. CONTEXTO DO PROJETO
+
+Estou construindo um pipeline de dados em Python para analisar voos realizados nos Estados Unidos durante o ano de 2025.
+
+O projeto utiliza dados públicos relacionados a companhias aéreas, aeroportos, estatísticas diárias dos aeroportos e registros individuais de voos.
+
+O foco analítico é:
+- Atrasos de voos.
+- Voos cancelados.
+- Desempenho das companhias aéreas.
+- Desempenho dos aeroportos.
+- Estatísticas diárias de movimentação e operação.
+
+Trabalho com **spec-driven development**: esta SPEC é a fonte da verdade e o código é consequência dela.
+
+Não acrescente requisitos que não estejam escritos aqui. Se alguma regra de negócio estiver ambígua, pergunte antes de implementar.
+
+---
+
+## 2. STACK
+
+- Python 3.13.
+- Dependências gerenciadas com uv.
+- Pandas para leitura e manipulação dos CSVs.
+- DuckDB como banco de dados.
+- Banco: `aviation.duckdb`, localizado na raiz do projeto.
+- DBeaver para consultas SQL e exploração do banco.
+- Interface de exploração pelo navegador utilizando a extensão UI do DuckDB.
+- Nenhum orquestrador. Scripts executáveis pela linha de comando.
+
+---
+
+## 3. ESTRUTURA DO PROJETO
+
+Pasta raiz:
+
+`C:\Users\RoseaneGouvea\OneDrive - JPR DESENVOLVIMENTO DE SISTEMAS LTDA\Área de Trabalho\us-aviation-data-pipeline`
+
+Estrutura:
+
+```text
+us-aviation-data-pipeline/
+│
+├── Banco/
+│   ├── airlines.csv
+│   ├── airports.csv
+│   ├── daily_airport_stats.csv
+│   └── flights_2025_sample.csv
+│
+├── pipeline/
+│   ├── __init__.py
+│   ├── db.py
+│   └── ingestao.py
+│
+├── aviation.duckdb
+├── ui.py
+├── pyproject.toml
+└── SPEC.md
+```
+
+Os diretórios e arquivos devem ser resolvidos a partir da localização do próprio projeto, e não do diretório corrente do terminal.
+
+---
+
+# ARTEFATOS A PRODUZIR
+
+Nesta ordem:
+
+1. `pipeline/db.py`: módulo de conexão e gravação no DuckDB.
+2. `pipeline/ingestao.py`: ingestão dos quatro arquivos CSV para RAW.
+3. `ui.py`: interface para exploração do banco pelo navegador.
+
+Os três artefatos devem funcionar independentemente.
+
+---
+
+# SPEC DO pipeline/db.py
+
+## Objetivo
+
+Criar um módulo central responsável exclusivamente pela conexão com o DuckDB, criação de schemas e gravação de DataFrames.
+
+As etapas seguintes importarão este módulo.
+
+### D1. CAMINHOS
+
+O caminho do banco `aviation.duckdb` deve ser resolvido a partir da localização do próprio `db.py`, considerando que ele está dentro de `pipeline/`.
+
+O banco deve ser criado na raiz do projeto, um nível acima de `pipeline/`.
+
+A pasta RAW deve ser identificada pelo nome `Raw`, respeitando a estrutura existente.
+
+Motivo: executar um script a partir de outra pasta não pode criar um banco vazio no local errado.
+
+### D2. FUNÇÕES E CONSTANTES
+
+O módulo deve expor exatamente:
+
+- `PASTA_RAW`: Path da pasta Raw.
+- `conectar()`: abre o banco DuckDB, criando-o caso não exista.
+- `criar_schema(con, nome)`: executa CREATE SCHEMA IF NOT EXISTS.
+- `gravar(con, df, schema, tabela)`: grava o DataFrame e devolve a quantidade de registros efetivamente gravados.
+
+Não implementar outras regras de negócio neste módulo.
+
+O `db.py` não deve:
+- Ler arquivos CSV.
+- Conhecer os nomes das tabelas.
+- Fazer conversões de tipos.
+- Limpar dados.
+- Excluir registros.
+- Imprimir mensagens de execução.
+
+Motivo: cada etapa deve decidir suas próprias regras. O módulo de conexão precisa ser reutilizável.
+
+### D3. GRAVAÇÃO
+
+A função `gravar()` deve:
+
+1. Receber uma conexão DuckDB.
+2. Receber um DataFrame.
+3. Receber o nome do schema e da tabela.
+4. Recriar a tabela utilizando CREATE OR REPLACE TABLE.
+5. Preservar as colunas e os tipos existentes no DataFrame.
+6. Devolver a quantidade de registros consultada diretamente no banco por SELECT COUNT(*).
+
+Não deixar views ou tabelas temporárias desnecessárias.
+
+Motivo: a contagem exibida precisa representar o conteúdo efetivamente gravado no banco.
+
+### D4. CONEXÃO
+
+A função `conectar()` devolve uma conexão aberta.
+
+Quem chama a função é responsável por fechar a conexão.
+
+Não manter conexão global.
+
+### CRITÉRIOS DE ACEITE — db.py
+
+- Importar `pipeline.db` não abre o banco nem cria arquivos.
+- Executar `conectar()` a partir de outra pasta cria `aviation.duckdb` na raiz do projeto.
+- A função `criar_schema()` cria schemas sem gerar erro quando eles já existem.
+- Gravar um DataFrame de três registros devolve três.
+- Executar a gravação novamente substitui os registros anteriores, sem duplicar dados.
+
+---
+
+# SPEC DO pipeline/ingestao.py
+
+## Objetivo
+
+Realizar a ingestão dos quatro arquivos CSV originais para o schema RAW do DuckDB.
+
+A ingestão representa a entrada dos dados no pipeline, sem aplicar regras de transformação.
+
+### 1. ESCOPO E NOMES
+
+Schema de destino:
+
+`raw`
+
+Mapa de arquivos para tabelas, completo e literal:
+
+| Arquivo | Tabela de destino |
+|---|---|
+| airlines.csv | airlines |
+| airports.csv | airports |
+| daily_airport_stats.csv | daily_airport_stats |
+| flights_2025_sample.csv | flights_2025 |
+
+O arquivo `flights_sample.csv` NÃO deve ser importado.
+
+Motivo: ele será mantido fora do escopo da ingestão. O pipeline utilizará os quatro arquivos definidos acima.
+
+### 2. PROIBIÇÕES
+
+Durante a ingestão:
+
+- Nenhuma conversão de tipos.
+- Nenhuma linha descartada.
+- Nenhuma deduplicação.
+- Nenhuma coluna renomeada.
+- Nenhum valor corrigido.
+- Nenhum preenchimento de campos nulos.
+- Nenhuma normalização de dados.
+- Nenhuma aplicação de regras de negócio.
+
+Motivo: RAW deve representar os dados recebidos, preservando a fronteira entre o dado original e o dado tratado.
+
+As transformações serão responsabilidade de uma etapa posterior, de RAW para REFINED.
+
+### 3. REEXECUÇÃO
+
+A ingestão deve ser idempotente.
+
+Executar o script várias vezes deve produzir o mesmo resultado de uma única execução.
+
+As tabelas devem ser recriadas utilizando CREATE OR REPLACE TABLE.
+
+Nunca utilizar INSERT para acrescentar os dados de uma execução anterior.
+
+Motivo: permitir reexecuções durante o desenvolvimento sem gerar duplicidades.
+
+### 4. LEITURA DOS ARQUIVOS
+
+Os arquivos devem ser lidos diretamente da pasta `Banco/`.
+
+Configurações:
+
+- Utilizar Pandas.
+- Encoding declarado como UTF-8.
+- Não realizar detecção automática de encoding.
+- Não descompactar arquivos, pois os arquivos são CSVs comuns.
+- Não modificar os arquivos originais.
+
+Campos vazios devem continuar representando valores nulos.
+
+Não transformar campos vazios em strings vazias nem converter valores textuais especiais em nulos por inferência automática.
+
+Motivo: preservar o conteúdo original e evitar interpretações indevidas durante a ingestão.
+
+### 5. TIPAGEM
+
+Todas as colunas devem ser importadas como texto.
+
+Utilizar:
+
+`dtype=str`
+
+A inferência automática de tipos deve permanecer desativada.
+
+Exemplos:
+
+- Datas permanecem texto.
+- Horários permanecem texto.
+- Quantidades permanecem texto.
+- Identificadores permanecem texto.
+- Valores numéricos permanecem texto.
+
+Motivo: a conversão de tipos deve acontecer na camada REFINED, onde as decisões de transformação serão documentadas.
+
+### 6. SAÍDA NA TELA
+
+A execução deve apresentar uma linha para cada tabela importada.
+
+Formato esperado:
+
+```text
+RAW.airlines                 | X registros
+RAW.airports                 | X registros
+RAW.daily_airport_stats      | X registros
+RAW.flights_2025             | X registros
+
+TOTAL                        | X registros
+```
+
+Regras:
+
+- As contagens devem ser obtidas diretamente do DuckDB.
+- Não utilizar a quantidade de linhas do DataFrame como resultado final.
+- Separar milhares utilizando ponto.
+- Exibir o nome qualificado do schema e da tabela.
+- Reconfigurar stdout para UTF-8.
+
+O total deve representar a soma das quatro tabelas importadas.
+
+Não existe uma quantidade total de registros previamente fixada nesta SPEC. O total correto será determinado pelos arquivos existentes.
+
+### 7. TRATAMENTO DE ERROS
+
+Antes de abrir o banco, verificar se os quatro arquivos obrigatórios existem.
+
+Se algum estiver faltando:
+
+1. Informar quais arquivos estão ausentes.
+2. Informar o caminho da pasta onde foram procurados.
+3. Encerrar a execução utilizando `sys.exit(1)`.
+4. Não realizar ingestão parcial.
+5. Não criar ou modificar nenhuma tabela.
+
+Motivo: impedir que um banco parcialmente atualizado seja interpretado como uma ingestão completa.
+
+### 8. EXECUÇÃO
+
+O módulo deve ser executável por:
+
+```powershell
+uv run python -m pipeline.ingestao
+```
+
+O script deve encerrar automaticamente após concluir a ingestão.
+
+Não manter processos ativos.
+
+### CRITÉRIOS DE ACEITE — INGESTÃO
+
+- Importar exatamente quatro arquivos.
+- Não importar `flights_sample.csv`.
+- Criar as quatro tabelas no schema RAW.
+- Todas as colunas devem entrar como VARCHAR.
+- Nenhuma transformação deve ocorrer.
+- As contagens exibidas devem vir do banco.
+- Executar duas vezes deve produzir o mesmo resultado.
+- Remover um arquivo obrigatório deve interromper o processo antes de qualquer gravação.
+- O script deve devolver o terminal após a execução.
+
+---
+
+# SPEC DO ui.py
+
+## Objetivo
+
+Disponibilizar uma interface no navegador para explorar o banco de dados de aviação.
+
+### U1. O QUE FAZ
+
+O arquivo `ui.py` deve:
+
+1. Localizar `aviation.duckdb` na raiz do projeto.
+2. Abrir o banco DuckDB.
+3. Instalar e carregar a extensão `ui` do DuckDB.
+4. Executar `CALL start_ui()`.
+5. Disponibilizar a interface em:
+
+`http://localhost:4213`
+
+6. Abrir o navegador automaticamente.
+
+A interface deve permitir explorar os schemas e consultar as tabelas disponíveis.
+
+### U2. FICA DE PÉ ATÉ CTRL+C
+
+A extensão UI permanece ativa enquanto a conexão estiver aberta.
+
+O script deve:
+
+- Manter o processo em execução.
+- Informar a URL da interface.
+- Exibir a instrução `Ctrl+C para encerrar`.
+- Capturar KeyboardInterrupt.
+- Fechar a conexão ao encerrar.
+- Finalizar sem traceback.
+
+Motivo: o DuckDB utiliza bloqueio de arquivo. Manter o servidor ativo pode impedir outras operações no banco.
+
+### U3. NÃO CRIA BANCO
+
+Se `aviation.duckdb` não existir:
+
+- Exibir mensagem informando que é necessário executar a ingestão primeiro.
+- Encerrar com `sys.exit(1)`.
+- Não criar um banco vazio.
+
+Motivo: um banco vazio aberto no navegador pode parecer uma ingestão que não funcionou.
+
+### U4. SEPARAÇÃO
+
+O `ui.py` não deve importar `pipeline/ingestao.py`.
+
+A ingestão não deve importar `ui.py`.
+
+A ingestão não deve depender da extensão UI para funcionar.
+
+Motivo: a interface é uma ferramenta de exploração, não uma dependência do pipeline.
+
+### U5. CONEXÃO
+
+A conexão utilizada pela interface deve ser aberta em modo somente leitura sempre que compatível com a extensão UI.
+
+A interface não deve executar transformações ou alterar os dados das tabelas.
+
+### U6. SAÍDA NA TELA
+
+Reconfigurar stdout para UTF-8.
+
+Apresentar:
+
+```text
+US Aviation Data Pipeline
+
+Banco: aviation.duckdb
+Interface: http://localhost:4213
+
+Pressione Ctrl+C para encerrar.
+```
+
+### CRITÉRIOS DE ACEITE — ui.py
+
+- Executar `uv run python ui.py` abre a interface no navegador.
+- O schema RAW aparece com as quatro tabelas.
+- A interface permite consultar os registros.
+- O script permanece ativo enquanto o usuário utiliza a interface.
+- Ctrl+C encerra o processo sem traceback.
+- Após encerrar a interface, a ingestão consegue acessar o banco sem erro de lock.
+- Renomear o banco faz o script apresentar a mensagem de erro sem criar outro arquivo.
+
+---
+
+# 4. REGRAS GERAIS DO PROJETO
+
+1. A pasta Raw contém os arquivos originais.
+2. Os dados originais nunca devem ser sobrescritos.
+3. A camada RAW preserva os dados recebidos.
+4. A camada REFINED será responsável pelas transformações e conversões de tipos.
+5. As regras de transformação devem ser documentadas antes da implementação.
+6. O DuckDB será o banco central do projeto.
+7. Os scripts devem funcionar independentemente do diretório corrente.
+8. A execução deve ser reproduzível.
+9. Nenhuma regra de negócio deve ser implementada sem estar especificada.
+10. Os arquivos de origem devem ser tratados como entrada, não como saída do pipeline.
+
+---
+
+# 5. O QUE NÃO ESTÁ DEFINIDO NESTA SPEC
+
+Os seguintes pontos dependem de uma especificação posterior:
+
+- Conversão dos campos de datas e horários.
+- Conversão de atrasos para tipos numéricos.
+- Tratamento de registros duplicados.
+- Tratamento de valores nulos na REFINED.
+- Regras para identificar voos atrasados.
+- Regras para classificar cancelamentos.
+- Cálculo de percentual de cancelamento.
+- Cálculo de atraso médio.
+- Relacionamento entre voos, aeroportos e companhias aéreas.
+- Regras de agregação por aeroporto, companhia e período.
+- Indicadores analíticos da camada GOLD.
+- Layout e indicadores de um dashboard analítico.
+
+Essas regras não devem ser presumidas nem implementadas nesta etapa.
+
+---
+
+# 6. ENTREGA
+
+Para cada arquivo, nesta ordem:
+
+1. Apresentar a SPEC como docstring no topo do arquivo, incluindo a justificativa de cada regra.
+2. Apresentar o código completo.
+3. Utilizar comentários somente quando a decisão não for evidente pelo código.
+4. Apresentar uma lista final com tudo que foi assumido e que não estava documentado.
+
+Se a lista de premissas não estiver vazia, a SPEC deverá ser revisada antes de considerar o artefato concluído.
+
+**Princípio central:** o código deve obedecer à SPEC. A SPEC não deve ser alterada silenciosamente para acomodar decisões tomadas durante a programação.

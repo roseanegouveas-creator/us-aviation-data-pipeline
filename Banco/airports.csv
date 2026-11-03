@@ -1,0 +1,362 @@
+iata_code,icao_code,airport_name,city,state,latitude,longitude,elevation_ft,airport_type,departures,arrivals,_source_file,_ingested_at
+ORD,KORD,Chicago O'Hare International Airport,"Chicago, IL",IL,41.9786,-87.9048,680,large_airport,573580,573532,airports.csv,2026-11-03 13:33:42.011681+00
+DEN,KDEN,Denver International Airport,"Denver, CO",CO,39.860027,-104.673792,5431,large_airport,531750,531722,airports.csv,2026-11-03 13:33:42.011681+00
+ATL,KATL,Hartsfield Jackson Atlanta International Airport,"Atlanta, GA",GA,33.6367,-84.428101,1026,large_airport,525113,525091,airports.csv,2026-11-03 13:33:42.011681+00
+DFW,KDFW,Dallas Fort Worth International Airport,"Dallas/Fort Worth, TX",TX,32.896801,-97.038002,607,large_airport,525000,524995,airports.csv,2026-11-03 13:33:42.011681+00
+PHX,KPHX,Phoenix Sky Harbor International Airport,"Phoenix, AZ",AZ,33.435302,-112.005905,1135,large_airport,329807,329795,airports.csv,2026-11-03 13:33:42.011681+00
+LAX,KLAX,Los Angeles International Airport,"Los Angeles, CA",CA,33.942501,-118.407997,125,large_airport,317723,317727,airports.csv,2026-11-03 13:33:42.011681+00
+CLT,KCLT,Charlotte Douglas International Airport,"Charlotte, NC",NC,35.2140007019043,-80.94309997558594,748,large_airport,315043,315048,airports.csv,2026-11-03 13:33:42.011681+00
+LAS,KLAS,Harry Reid International Airport,"Las Vegas, NV",NV,36.083361,-115.151817,2181,large_airport,296661,296666,airports.csv,2026-11-03 13:33:42.011681+00
+SEA,KSEA,Seattle–Tacoma International Airport,"Seattle, WA",WA,47.447943,-122.310276,433,large_airport,275544,275551,airports.csv,2026-11-03 13:33:42.011681+00
+MCO,KMCO,Orlando International Airport,"Orlando, FL",FL,28.429399490356445,-81.30899810791016,96,large_airport,267994,267952,airports.csv,2026-11-03 13:33:42.011681+00
+SFO,KSFO,San Francisco International Airport,"San Francisco, CA",CA,37.619806,-122.374821,13,large_airport,244426,244591,airports.csv,2026-11-03 13:33:42.011681+00
+BOS,KBOS,Boston Logan International Airport,"Boston, MA",MA,42.36197,-71.0079,20,large_airport,240156,240159,airports.csv,2026-11-03 13:33:42.011681+00
+DCA,KDCA,Ronald Reagan Washington National Airport,"Washington, DC",VA,38.8521,-77.037697,15,large_airport,237746,237794,airports.csv,2026-11-03 13:33:42.011681+00
+LGA,KLGA,LaGuardia Airport,"New York, NY",NY,40.777199,-73.872597,21,large_airport,224650,224637,airports.csv,2026-11-03 13:33:42.011681+00
+DTW,KDTW,Detroit Metropolitan Wayne County Airport,"Detroit, MI",MI,42.21377,-83.353786,645,large_airport,202888,202878,airports.csv,2026-11-03 13:33:42.011681+00
+EWR,KEWR,Newark Liberty International Airport,"Newark, NJ",NJ,40.6894,-74.170545,18,large_airport,200975,201189,airports.csv,2026-11-03 13:33:42.011681+00
+IAH,KIAH,George Bush Intercontinental Airport,"Houston, TX",TX,29.9844,-95.3414,97,large_airport,196462,196456,airports.csv,2026-11-03 13:33:42.011681+00
+SLC,KSLC,Salt Lake City International Airport,"Salt Lake City, UT",UT,40.78886,-111.979866,4227,large_airport,196142,195947,airports.csv,2026-11-03 13:33:42.011681+00
+MSP,KMSP,Minneapolis–Saint Paul International Airport / Wold–Chamberlain Field,"Minneapolis, MN",MN,44.880081,-93.221741,841,large_airport,190728,190737,airports.csv,2026-11-03 13:33:42.011681+00
+MIA,KMIA,Miami International Airport,"Miami, FL",FL,25.796011,-80.289751,8,large_airport,187640,187644,airports.csv,2026-11-03 13:33:42.011681+00
+BNA,KBNA,Nashville International Airport,"Nashville, TN",TN,36.1245,-86.6782,599,large_airport,179207,179200,airports.csv,2026-11-03 13:33:42.011681+00
+JFK,KJFK,John F. Kennedy International Airport,"New York, NY",NY,40.639447,-73.779317,13,large_airport,172496,172425,airports.csv,2026-11-03 13:33:42.011681+00
+PHL,KPHL,Philadelphia International Airport,"Philadelphia, PA",PA,39.871899,-75.241096,36,large_airport,166730,166722,airports.csv,2026-11-03 13:33:42.011681+00
+SAN,KSAN,San Diego International Airport,"San Diego, CA",CA,32.733601,-117.190002,17,large_airport,165058,165052,airports.csv,2026-11-03 13:33:42.011681+00
+BWI,KBWI,Baltimore/Washington International Thurgood Marshall Airport,"Baltimore, MD",MD,39.1754,-76.668297,146,large_airport,158096,158102,airports.csv,2026-11-03 13:33:42.011681+00
+FLL,KFLL,Fort Lauderdale Hollywood International Airport,"Fort Lauderdale, FL",FL,26.072599,-80.152702,9,large_airport,149669,149669,airports.csv,2026-11-03 13:33:42.011681+00
+AUS,KAUS,Austin Bergstrom International Airport,"Austin, TX",TX,30.197535,-97.662015,542,large_airport,146991,147005,airports.csv,2026-11-03 13:33:42.011681+00
+TPA,KTPA,Tampa International Airport,"Tampa, FL",FL,27.9755,-82.533203,26,large_airport,130933,130933,airports.csv,2026-11-03 13:33:42.011681+00
+MDW,KMDW,Chicago Midway International Airport,"Chicago, IL",IL,41.785999,-87.752403,620,large_airport,123414,123420,airports.csv,2026-11-03 13:33:42.011681+00
+DAL,KDAL,Dallas Love Field,"Dallas, TX",TX,32.844776,-96.847653,487,large_airport,118315,118309,airports.csv,2026-11-03 13:33:42.011681+00
+STL,KSTL,St. Louis Lambert International Airport,"St. Louis, MO",MO,38.748697,-90.370003,618,large_airport,105805,105809,airports.csv,2026-11-03 13:33:42.011681+00
+PDX,KPDX,Portland International Airport,"Portland, OR",OR,45.588699,-122.598,31,large_airport,104081,104075,airports.csv,2026-11-03 13:33:42.011681+00
+HNL,PHNL,Daniel K. Inouye International Airport,"Honolulu, HI",HI,21.318387,-157.92567,13,large_airport,98068,98091,airports.csv,2026-11-03 13:33:42.011681+00
+IAD,KIAD,Washington Dulles International Airport,"Washington, DC",VA,38.9445,-77.455803,312,large_airport,96374,96139,airports.csv,2026-11-03 13:33:42.011681+00
+SMF,KSMF,Sacramento International Airport,"Sacramento, CA",CA,38.6954,-121.591003,27,large_airport,95032,95037,airports.csv,2026-11-03 13:33:42.011681+00
+RDU,KRDU,Raleigh-Durham International Airport,"Raleigh/Durham, NC",NC,35.878659,-78.7873,435,large_airport,91841,91838,airports.csv,2026-11-03 13:33:42.011681+00
+HOU,KHOU,William P. Hobby Airport,"Houston, TX",TX,29.645336,-95.276812,46,large_airport,90310,90293,airports.csv,2026-11-03 13:33:42.011681+00
+MSY,KMSY,Louis Armstrong New Orleans International Airport,"New Orleans, LA",LA,29.993401,-90.264673,4,large_airport,83193,83189,airports.csv,2026-11-03 13:33:42.011681+00
+MCI,KMCI,Kansas City International Airport,"Kansas City, MO",MO,39.301699,-94.713893,1026,large_airport,81775,81779,airports.csv,2026-11-03 13:33:42.011681+00
+IND,KIND,Indianapolis International Airport,"Indianapolis, IN",IN,39.7173,-86.294403,797,large_airport,80039,80045,airports.csv,2026-11-03 13:33:42.011681+00
+SNA,KSNA,John Wayne Orange County International Airport,"Santa Ana, CA",CA,33.675063,-117.869281,56,large_airport,75005,75005,airports.csv,2026-11-03 13:33:42.011681+00
+CMH,KCMH,John Glenn Columbus International Airport,"Columbus, OH",OH,39.998001,-82.891899,815,large_airport,74247,74262,airports.csv,2026-11-03 13:33:42.011681+00
+SJC,KSJC,Mineta San Jose International Airport,"San Jose, CA",CA,37.362452,-121.929188,62,large_airport,74192,74039,airports.csv,2026-11-03 13:33:42.011681+00
+PIT,KPIT,Pittsburgh International Airport,"Pittsburgh, PA",PA,40.491501,-80.232903,1203,large_airport,71438,71435,airports.csv,2026-11-03 13:33:42.011681+00
+SAT,KSAT,San Antonio International Airport,"San Antonio, TX",TX,29.533701,-98.469803,809,large_airport,67857,67861,airports.csv,2026-11-03 13:33:42.011681+00
+CLE,KCLE,Cleveland Hopkins International Airport,"Cleveland, OH",OH,41.411701,-81.8498,791,large_airport,67330,67536,airports.csv,2026-11-03 13:33:42.011681+00
+SJU,TJSJ,Luis Munoz Marin International Airport,"San Juan, PR",PR,18.4394,-66.001801,9,large_airport,60779,60770,airports.csv,2026-11-03 13:33:42.011681+00
+RSW,KRSW,Southwest Florida International Airport,"Fort Myers, FL",FL,26.534685,-81.752816,30,large_airport,59196,59183,airports.csv,2026-11-03 13:33:42.011681+00
+CVG,KCVG,Cincinnati Northern Kentucky International Airport,"Cincinnati, OH",KY,39.048801,-84.667801,896,large_airport,56569,56575,airports.csv,2026-11-03 13:33:42.011681+00
+OAK,KOAK,Oakland San Francisco Bay Airport,"Oakland, CA",CA,37.720085,-122.221184,9,large_airport,55089,55063,airports.csv,2026-11-03 13:33:42.011681+00
+BUR,KBUR,Hollywood Burbank/Bob Hope Airport,"Burbank, CA",CA,34.202834,-118.35805,778,large_airport,50254,50258,airports.csv,2026-11-03 13:33:42.011681+00
+PBI,KDJT,President Donald J. Trump International Airport,"West Palm Beach/Palm Beach, FL",FL,26.683201,-80.095596,19,large_airport,50119,50111,airports.csv,2026-11-03 13:33:42.011681+00
+JAX,KJAX,Jacksonville International Airport,"Jacksonville, FL",FL,30.492469,-81.687813,30,large_airport,48149,48142,airports.csv,2026-11-03 13:33:42.011681+00
+MKE,KMKE,General Mitchell International Airport,"Milwaukee, WI",WI,42.947201,-87.896599,723,large_airport,47859,47858,airports.csv,2026-11-03 13:33:42.011681+00
+ONT,KONT,Ontario International Airport,"Ontario, CA",CA,34.056,-117.600998,944,large_airport,43195,43198,airports.csv,2026-11-03 13:33:42.011681+00
+OGG,PHOG,Kahului International Airport,"Kahului, HI",HI,20.896263,-156.431837,54,large_airport,42955,42957,airports.csv,2026-11-03 13:33:42.011681+00
+OMA,KOMA,Eppley Airfield,"Omaha, NE",NE,41.3032,-95.894096,984,large_airport,41785,41785,airports.csv,2026-11-03 13:33:42.011681+00
+ABQ,KABQ,Albuquerque International Sunport,"Albuquerque, NM",NM,35.039976,-106.608925,5355,large_airport,41248,41251,airports.csv,2026-11-03 13:33:42.011681+00
+CHS,KCHS,Charleston International Airport,"Charleston, SC",SC,32.896159,-80.038151,46,large_airport,41009,41009,airports.csv,2026-11-03 13:33:42.011681+00
+MEM,KMEM,Frederick W. Smith International Airport,"Memphis, TN",TN,35.043845,-89.97634,341,large_airport,40350,40349,airports.csv,2026-11-03 13:33:42.011681+00
+OKC,KOKC,OKC Will Rogers World Airport,"Oklahoma City, OK",OK,35.393388,-97.598248,1295,large_airport,39998,39997,airports.csv,2026-11-03 13:33:42.011681+00
+BOI,KBOI,Boise Air Terminal/Gowen Field,"Boise, ID",ID,43.5644,-116.223,2871,large_airport,39321,39325,airports.csv,2026-11-03 13:33:42.011681+00
+SDF,KSDF,Louisville Muhammad Ali International Airport,"Louisville, KY",KY,38.1706,-85.735076,501,large_airport,38669,38669,airports.csv,2026-11-03 13:33:42.011681+00
+BDL,KBDL,Bradley International Airport,"Hartford, CT",CT,41.938555,-72.688016,173,large_airport,37815,37819,airports.csv,2026-11-03 13:33:42.011681+00
+RNO,KRNO,Reno Tahoe International Airport,"Reno, NV",NV,39.4991,-119.767998,4415,large_airport,35472,35471,airports.csv,2026-11-03 13:33:42.011681+00
+BUF,KBUF,Buffalo Niagara International Airport,"Buffalo, NY",NY,42.940498,-78.732201,728,large_airport,34421,34420,airports.csv,2026-11-03 13:33:42.011681+00
+ORF,KORF,Norfolk International Airport,"Norfolk, VA",VA,36.895341,-76.201,26,large_airport,33387,33384,airports.csv,2026-11-03 13:33:42.011681+00
+ANC,PANC,Ted Stevens Anchorage International Airport,"Anchorage, AK",AK,61.179004,-149.992561,152,large_airport,33212,33223,airports.csv,2026-11-03 13:33:42.011681+00
+TUS,KTUS,Tucson International Airport,"Tucson, AZ",AZ,32.115004,-110.938053,2643,large_airport,33201,33199,airports.csv,2026-11-03 13:33:42.011681+00
+SAV,KSAV,Savannah Hilton Head International Airport,"Savannah, GA",GA,32.126591,-81.19998,50,large_airport,31934,31935,airports.csv,2026-11-03 13:33:42.011681+00
+GRR,KGRR,Gerald R. Ford International Airport,"Grand Rapids, MI",MI,42.880798,-85.522797,794,large_airport,31459,31469,airports.csv,2026-11-03 13:33:42.011681+00
+RIC,KRIC,Richmond International Airport,"Richmond, VA",VA,37.505199,-77.319702,167,large_airport,30713,30714,airports.csv,2026-11-03 13:33:42.011681+00
+GEG,KGEG,Spokane International Airport,"Spokane, WA",WA,47.6199,-117.533997,2376,large_airport,30489,30491,airports.csv,2026-11-03 13:33:42.011681+00
+TUL,KTUL,Tulsa International Airport,"Tulsa, OK",OK,36.197084,-95.886225,677,large_airport,30337,30338,airports.csv,2026-11-03 13:33:42.011681+00
+SRQ,KSRQ,Sarasota Bradenton International Airport,"Sarasota/Bradenton, FL",FL,27.394631,-82.554359,30,large_airport,29298,29299,airports.csv,2026-11-03 13:33:42.011681+00
+BHM,KBHM,Birmingham-Shuttlesworth International Airport,"Birmingham, AL",AL,33.562877,-86.750712,650,large_airport,28120,28125,airports.csv,2026-11-03 13:33:42.011681+00
+ELP,KELP,El Paso International Airport,"El Paso, TX",TX,31.809908,-106.375607,3959,large_airport,27692,27694,airports.csv,2026-11-03 13:33:42.011681+00
+KOA,PHKO,Ellison Onizuka Kona International Airport at Keāhole,"Kona, HI",HI,19.738783,-156.045603,47,large_airport,26736,26734,airports.csv,2026-11-03 13:33:42.011681+00
+LIH,PHLI,Lihue Airport,"Lihue, HI",HI,21.974393,-159.337146,153,large_airport,26432,26429,airports.csv,2026-11-03 13:33:42.011681+00
+LGB,KLGB,Long Beach International Airport,"Long Beach, CA",CA,33.816523,-118.149891,60,large_airport,26200,26199,airports.csv,2026-11-03 13:33:42.011681+00
+PVD,KPVD,Rhode Island T. F. Green International Airport,"Providence, RI",RI,41.725038,-71.425668,55,large_airport,25792,25792,airports.csv,2026-11-03 13:33:42.011681+00
+DSM,KDSM,Des Moines International Airport,"Des Moines, IA",IA,41.534027,-93.656719,958,large_airport,25163,25168,airports.csv,2026-11-03 13:33:42.011681+00
+PSP,KPSP,Palm Springs International Airport,"Palm Springs, CA",CA,33.8297,-116.507004,477,large_airport,25070,25072,airports.csv,2026-11-03 13:33:42.011681+00
+GSP,KGSP,Greenville-Spartanburg International Airport,"Greer, SC",SC,34.895699,-82.218903,964,medium_airport,23792,23802,airports.csv,2026-11-03 13:33:42.011681+00
+PNS,KPNS,Pensacola International Airport,"Pensacola, FL",FL,30.472718,-87.186639,121,large_airport,23456,23457,airports.csv,2026-11-03 13:33:42.011681+00
+MYR,KMYR,Myrtle Beach International Airport,"Myrtle Beach, SC",SC,33.679699,-78.928299,25,large_airport,22997,22996,airports.csv,2026-11-03 13:33:42.011681+00
+XNA,KXNA,Northwest Arkansas National Airport,"Fayetteville, AR",AR,36.281898,-94.306801,1287,medium_airport,22737,22736,airports.csv,2026-11-03 13:33:42.011681+00
+TYS,KTYS,McGhee Tyson Airport,"Knoxville, TN",TN,35.811001,-83.994003,981,large_airport,22572,22575,airports.csv,2026-11-03 13:33:42.011681+00
+MSN,KMSN,Dane County Regional Truax Field,"Madison, WI",WI,43.1399,-89.337502,887,medium_airport,22431,22437,airports.csv,2026-11-03 13:33:42.011681+00
+COS,KCOS,City of Colorado Springs Municipal Airport,"Colorado Springs, CO",CO,38.805801,-104.700996,6187,large_airport,21909,21910,airports.csv,2026-11-03 13:33:42.011681+00
+FAT,KFAT,Fresno Yosemite International Airport,"Fresno, CA",CA,36.775767,-119.718018,336,large_airport,21871,21876,airports.csv,2026-11-03 13:33:42.011681+00
+LIT,KLIT,Bill & Hillary Clinton National Airport/Adams Field,"Little Rock, AR",AR,34.729222,-92.223591,262,medium_airport,21786,21786,airports.csv,2026-11-03 13:33:42.011681+00
+ALB,KALB,Albany International Airport,"Albany, NY",NY,42.748299,-73.801697,285,large_airport,21242,21247,airports.csv,2026-11-03 13:33:42.011681+00
+BZN,KBZN,Bozeman Yellowstone International Airport,"Bozeman, MT",MT,45.778853,-111.153711,4473,medium_airport,19299,19302,airports.csv,2026-11-03 13:33:42.011681+00
+ICT,KICT,Wichita Dwight D. Eisenhower National Airport,"Wichita, KS",KS,37.650314,-97.428583,1333,medium_airport,18942,18937,airports.csv,2026-11-03 13:33:42.011681+00
+VPS,KVPS,Destin-Fort Walton Beach Airport,"Valparaiso, FL",FL,30.481315,-86.515839,87,medium_airport,18662,18665,airports.csv,2026-11-03 13:33:42.011681+00
+PWM,KPWM,Portland International Jetport,"Portland, ME",ME,43.646198,-70.309303,76,large_airport,17997,17999,airports.csv,2026-11-03 13:33:42.011681+00
+HPN,KHPN,Westchester County Airport,"White Plains, NY",NY,41.06700134277344,-73.70760345458984,439,medium_airport,17763,17772,airports.csv,2026-11-03 13:33:42.011681+00
+SFB,KSFB,Orlando Sanford International Airport,"Sanford, FL",FL,28.774277,-81.234626,55,large_airport,17462,17468,airports.csv,2026-11-03 13:33:42.011681+00
+SYR,KSYR,Syracuse Hancock International Airport,"Syracuse, NY",NY,43.11119842529297,-76.1063003540039,421,large_airport,17403,17395,airports.csv,2026-11-03 13:33:42.011681+00
+ROC,KROC,Frederick Douglass Greater Rochester International Airport,"Rochester, NY",NY,43.1189,-77.672401,559,large_airport,17157,17152,airports.csv,2026-11-03 13:33:42.011681+00
+GSO,KGSO,Piedmont Triad International Airport,"Greensboro/High Point, NC",NC,36.09937,-79.937262,925,large_airport,17011,17009,airports.csv,2026-11-03 13:33:42.011681+00
+AVL,KAVL,Asheville Regional Airport,"Asheville, NC",NC,35.435488,-82.541853,2165,medium_airport,16689,16697,airports.csv,2026-11-03 13:33:42.011681+00
+ECP,KECP,Northwest Florida Beaches International Airport,"Panama City, FL",FL,30.357106,-85.795414,69,medium_airport,16122,16124,airports.csv,2026-11-03 13:33:42.011681+00
+PIE,KPIE,St. Petersburg Clearwater International Airport,"St. Petersburg, FL",FL,27.9102,-82.687401,11,large_airport,15753,15755,airports.csv,2026-11-03 13:33:42.011681+00
+MAF,KMAF,Midland International Air and Space Port,"Midland/Odessa, TX",TX,31.942499,-102.202003,2871,medium_airport,15664,15664,airports.csv,2026-11-03 13:33:42.011681+00
+LEX,KLEX,Blue Grass Airport,"Lexington, KY",KY,38.035066,-84.606738,979,medium_airport,15503,15506,airports.csv,2026-11-03 13:33:42.011681+00
+SGF,KSGF,Springfield Branson National Airport,"Springfield, MO",MO,37.245047,-93.388596,1268,medium_airport,14795,14794,airports.csv,2026-11-03 13:33:42.011681+00
+EUG,KEUG,Eugene Airport,"Eugene, OR",OR,44.124599,-123.211998,374,medium_airport,14410,14413,airports.csv,2026-11-03 13:33:42.011681+00
+SBA,KSBA,Santa Barbara Municipal Airport,"Santa Barbara, CA",CA,34.426201,-119.839996,13,medium_airport,14066,14068,airports.csv,2026-11-03 13:33:42.011681+00
+CID,KCID,The Eastern Iowa Airport,"Cedar Rapids/Iowa City, IA",IA,41.884701,-91.7108,869,medium_airport,13876,13878,airports.csv,2026-11-03 13:33:42.011681+00
+HSV,KHSV,Huntsville International Airport,"Huntsville, AL",AL,34.636244,-86.774378,629,medium_airport,13851,13853,airports.csv,2026-11-03 13:33:42.011681+00
+ASE,KASE,Aspen-Pitkin County Airport (Sardy Field),"Aspen, CO",CO,39.223202,-106.869003,7820,medium_airport,13694,13695,airports.csv,2026-11-03 13:33:42.011681+00
+EYW,KEYW,Key West International Airport,"Key West, FL",FL,24.556119,-81.759579,3,medium_airport,13563,13564,airports.csv,2026-11-03 13:33:42.011681+00
+SBN,KSBN,South Bend International Airport,"South Bend, IN",IN,41.708304,-86.316922,799,medium_airport,13223,13223,airports.csv,2026-11-03 13:33:42.011681+00
+DAY,KDAY,James M. Cox Dayton International Airport,"Dayton, OH",OH,39.902401,-84.219398,1009,medium_airport,13112,13119,airports.csv,2026-11-03 13:33:42.011681+00
+FSD,KFSD,Sioux Falls Regional Airport,"Sioux Falls, SD",SD,43.585463,-96.741152,1429,medium_airport,12969,12971,airports.csv,2026-11-03 13:33:42.011681+00
+PGD,KPGD,Punta Gorda Airport,"Punta Gorda, FL",FL,26.9202,-81.990501,26,medium_airport,12803,12810,airports.csv,2026-11-03 13:33:42.011681+00
+ATW,KATW,Appleton International Airport,"Appleton, WI",WI,44.258515,-88.519,918,medium_airport,12739,12739,airports.csv,2026-11-03 13:33:42.011681+00
+ILM,KILM,Wilmington International Airport,"Wilmington, NC",NC,34.272345,-77.905117,32,medium_airport,12453,12452,airports.csv,2026-11-03 13:33:42.011681+00
+FAR,KFAR,Hector International Airport,"Fargo, ND",ND,46.9207,-96.815804,902,medium_airport,11648,11649,airports.csv,2026-11-03 13:33:42.011681+00
+JAC,KJAC,Jackson Hole Airport,"Jackson, WY",WY,43.6073,-110.737999,6451,medium_airport,11329,11337,airports.csv,2026-11-03 13:33:42.011681+00
+ITO,PHTO,Hilo International Airport,"Hilo, HI",HI,19.72135,-155.045428,38,medium_airport,11085,11086,airports.csv,2026-11-03 13:33:42.011681+00
+LBB,KLBB,Lubbock Preston Smith International Airport,"Lubbock, TX",TX,33.663601,-101.822998,3282,medium_airport,10869,10869,airports.csv,2026-11-03 13:33:42.011681+00
+AZA,KIWA,Mesa Gateway Airport,"Phoenix, AZ",AZ,33.3078,-111.654999,1382,medium_airport,10802,10809,airports.csv,2026-11-03 13:33:42.011681+00
+BTV,KBTV,Patrick Leahy Burlington International Airport,"Burlington, VT",VT,44.471901,-73.153297,335,medium_airport,10700,10701,airports.csv,2026-11-03 13:33:42.011681+00
+RDM,KRDM,Roberts Field,"Bend/Redmond, OR",OR,44.254101,-121.150002,3080,medium_airport,10650,10650,airports.csv,2026-11-03 13:33:42.011681+00
+FWA,KFWA,Fort Wayne International Airport,"Fort Wayne, IN",IN,40.978896,-85.194465,814,medium_airport,10579,10580,airports.csv,2026-11-03 13:33:42.011681+00
+PSC,KPSC,Tri Cities Airport,"Pasco/Kennewick/Richland, WA",WA,46.264702,-119.119003,410,medium_airport,10444,10443,airports.csv,2026-11-03 13:33:42.011681+00
+SHV,KSHV,Shreveport Regional Airport,"Shreveport, LA",LA,32.444747,-93.826741,258,medium_airport,10077,10080,airports.csv,2026-11-03 13:33:42.011681+00
+JAN,KJAN,Jackson-Medgar Wiley Evers International Airport,"Jackson/Vicksburg, MS",MS,32.311199,-90.075897,346,medium_airport,10001,10003,airports.csv,2026-11-03 13:33:42.011681+00
+MHT,KMHT,Manchester-Boston Regional Airport,"Manchester, NH",NH,42.932598,-71.435699,266,medium_airport,9935,9938,airports.csv,2026-11-03 13:33:42.011681+00
+RAP,KRAP,Rapid City Regional Airport,"Rapid City, SD",SD,44.0452995300293,-103.05699920654297,3204,medium_airport,9435,9434,airports.csv,2026-11-03 13:33:42.011681+00
+TVC,KTVC,Cherry Capital Airport,"Traverse City, MI",MI,44.741402,-85.582199,624,medium_airport,9280,9279,airports.csv,2026-11-03 13:33:42.011681+00
+STT,TIST,Cyril E. King Airport,"Charlotte Amalie, VI",VI,18.337091,-64.977251,23,large_airport,9277,9276,airports.csv,2026-11-03 13:33:42.011681+00
+MDT,KMDT,Harrisburg International Airport,"Harrisburg, PA",PA,40.192838,-76.762333,310,medium_airport,9222,9222,airports.csv,2026-11-03 13:33:42.011681+00
+CAE,KCAE,Columbia Metropolitan Airport,"Columbia, SC",SC,33.938172,-81.123022,236,medium_airport,9140,9142,airports.csv,2026-11-03 13:33:42.011681+00
+PIA,KPIA,General Wayne A. Downing Peoria International Airport,"Peoria, IL",IL,40.663841,-89.692631,660,medium_airport,9075,9076,airports.csv,2026-11-03 13:33:42.011681+00
+STS,KSTS,Charles M. Schulz Sonoma County Airport,"Santa Rosa, CA",CA,38.50899887,-122.8130035,128,medium_airport,8802,8803,airports.csv,2026-11-03 13:33:42.011681+00
+ISP,KISP,Long Island MacArthur Airport,"Islip, NY",NY,40.796324,-73.101703,99,medium_airport,8730,8732,airports.csv,2026-11-03 13:33:42.011681+00
+SBP,KSBP,San Luis County Regional Airport,"San Luis Obispo, CA",CA,35.236801147499996,-120.641998291,212,medium_airport,8530,8530,airports.csv,2026-11-03 13:33:42.011681+00
+AMA,KAMA,Rick Husband Amarillo International Airport,"Amarillo, TX",TX,35.217857,-101.706444,3607,medium_airport,8518,8518,airports.csv,2026-11-03 13:33:42.011681+00
+CHA,KCHA,Chattanooga Metropolitan Airport (Lovell Field),"Chattanooga, TN",TN,35.035301,-85.203796,683,medium_airport,8503,8504,airports.csv,2026-11-03 13:33:42.011681+00
+MFR,KMFR,Rogue Valley International-Medford Airport,"Medford, OR",OR,42.374199,-122.873001,1335,medium_airport,8434,8435,airports.csv,2026-11-03 13:33:42.011681+00
+MFE,KMFE,McAllen Miller International Airport,"Mission/McAllen/Edinburg, TX",TX,26.176141,-98.237965,107,medium_airport,8167,8167,airports.csv,2026-11-03 13:33:42.011681+00
+MSO,KMSO,Missoula Montana Airport,"Missoula, MT",MT,46.915816,-114.091107,3206,medium_airport,8117,8118,airports.csv,2026-11-03 13:33:42.011681+00
+GJT,KGJT,Grand Junction Regional Airport,"Grand Junction, CO",CO,39.126663,-108.529387,4858,medium_airport,7975,7973,airports.csv,2026-11-03 13:33:42.011681+00
+MRY,KMRY,Monterey Regional Airport,"Monterey, CA",CA,36.586777,-121.844183,257,medium_airport,7972,7973,airports.csv,2026-11-03 13:33:42.011681+00
+JNU,PAJN,Juneau International Airport,"Juneau, AK",AK,58.354935,-134.574416,21,medium_airport,7943,7945,airports.csv,2026-11-03 13:33:42.011681+00
+BIL,KBIL,Billings Logan International Airport,"Billings, MT",MT,45.808932,-108.541242,3652,medium_airport,7814,7815,airports.csv,2026-11-03 13:33:42.011681+00
+CAK,KCAK,Akron Canton Regional Airport,"Akron, OH",OH,40.916099548339844,-81.44219970703125,1228,medium_airport,7751,7753,airports.csv,2026-11-03 13:33:42.011681+00
+TLH,KTLH,Tallahassee International Airport,"Tallahassee, FL",FL,30.401209,-84.35433,81,medium_airport,7706,7705,airports.csv,2026-11-03 13:33:42.011681+00
+IDA,KIDA,Idaho Falls Regional Airport,"Idaho Falls, ID",ID,43.514599,-112.070999,4744,medium_airport,7673,7672,airports.csv,2026-11-03 13:33:42.011681+00
+GRB,KGRB,Austin Straubel International Airport,"Green Bay, WI",WI,44.483459,-88.130805,695,medium_airport,7653,7654,airports.csv,2026-11-03 13:33:42.011681+00
+SGU,KSGU,St George Regional Airport,"St. George, UT",UT,37.036389,-113.510306,2941,medium_airport,7632,7634,airports.csv,2026-11-03 13:33:42.011681+00
+BTR,KBTR,Baton Rouge Metropolitan Airport,"Baton Rouge, LA",LA,30.533199,-91.149597,70,medium_airport,7491,7493,airports.csv,2026-11-03 13:33:42.011681+00
+DRO,KDRO,Durango La Plata County Airport,"Durango, CO",CO,37.151501,-107.753998,6685,medium_airport,7405,7405,airports.csv,2026-11-03 13:33:42.011681+00
+FCA,KGPI,Glacier Park International Airport,"Kalispell, MT",MT,48.310501,-114.255997,2977,medium_airport,7192,7194,airports.csv,2026-11-03 13:33:42.011681+00
+MLI,KMLI,Quad City International Airport,"Moline, IL",IL,41.448502,-90.5075,590,medium_airport,7017,7017,airports.csv,2026-11-03 13:33:42.011681+00
+EGE,KEGE,Eagle County Regional Airport,"Eagle, CO",CO,39.64260101,-106.9179993,6548,medium_airport,6964,6963,airports.csv,2026-11-03 13:33:42.011681+00
+HRL,KHRL,Valley International Airport,"Harlingen/San Benito, TX",TX,26.228500366210938,-97.65440368652344,36,medium_airport,6862,6862,airports.csv,2026-11-03 13:33:42.011681+00
+SAF,KSAF,Santa Fe Municipal Airport,"Santa Fe, NM",NM,35.6171,-106.088997,6348,medium_airport,6761,6763,airports.csv,2026-11-03 13:33:42.011681+00
+CRP,KCRP,Corpus Christi International Airport,"Corpus Christi, TX",TX,27.770399,-97.501198,44,medium_airport,6752,6751,airports.csv,2026-11-03 13:33:42.011681+00
+FAI,PAFA,Fairbanks International Airport,"Fairbanks, AK",AK,64.815102,-147.856003,439,medium_airport,6740,6740,airports.csv,2026-11-03 13:33:42.011681+00
+BIS,KBIS,Bismarck Municipal Airport,"Bismarck/Mandan, ND",ND,46.772734,-100.746874,1661,medium_airport,6719,6718,airports.csv,2026-11-03 13:33:42.011681+00
+BGR,KBGR,Bangor International Airport,"Bangor, ME",ME,44.806364,-68.826668,192,medium_airport,6316,6315,airports.csv,2026-11-03 13:33:42.011681+00
+FNT,KFNT,Bishop International Airport,"Flint, MI",MI,42.969294,-83.743355,782,medium_airport,5600,5601,airports.csv,2026-11-03 13:33:42.011681+00
+DAB,KDAB,Daytona Beach International Airport,"Daytona Beach, FL",FL,29.18255,-81.059464,34,medium_airport,5454,5453,airports.csv,2026-11-03 13:33:42.011681+00
+ABE,KABE,Lehigh Valley International Airport,"Allentown/Bethlehem/Easton, PA",PA,40.651773,-75.442797,393,medium_airport,5417,5417,airports.csv,2026-11-03 13:33:42.011681+00
+GPT,KGPT,Gulfport Biloxi International Airport,"Gulfport/Biloxi, MS",MS,30.405582,-89.069836,28,medium_airport,5283,5282,airports.csv,2026-11-03 13:33:42.011681+00
+LNK,KLNK,Lincoln Airport,"Lincoln, NE",NE,40.844882,-96.76178,1219,medium_airport,5208,5212,airports.csv,2026-11-03 13:33:42.011681+00
+COU,KCOU,Columbia Regional Airport,"Columbia, MO",MO,38.8181,-92.219597,889,medium_airport,5105,5108,airports.csv,2026-11-03 13:33:42.011681+00
+BFL,KBFL,Meadows Field,"Bakersfield, CA",CA,35.433601,-119.056999,510,medium_airport,5001,5001,airports.csv,2026-11-03 13:33:42.011681+00
+MLB,KMLB,Melbourne Orlando International Airport,"Melbourne, FL",FL,28.102009,-80.641088,33,medium_airport,4847,4847,airports.csv,2026-11-03 13:33:42.011681+00
+PVU,KPVU,Provo Municipal Airport,"Provo, UT",UT,40.218894,-111.722445,4497,medium_airport,4789,4789,airports.csv,2026-11-03 13:33:42.011681+00
+CRW,KCRW,Yeager Airport,"Charleston/Dunbar, WV",WV,38.3731,-81.593201,981,medium_airport,4616,4614,airports.csv,2026-11-03 13:33:42.011681+00
+MOT,KMOT,Minot International Airport,"Minot, ND",ND,48.25801,-101.279123,1716,medium_airport,4578,4580,airports.csv,2026-11-03 13:33:42.011681+00
+SUN,KSUN,Friedman Memorial Airport,"Sun Valley/Hailey/Ketchum, ID",ID,43.50439835,-114.2959976,5318,medium_airport,4523,4524,airports.csv,2026-11-03 13:33:42.011681+00
+GNV,KGNV,Gainesville Regional Airport,"Gainesville, FL",FL,29.6900997162,-82.2717971802,152,medium_airport,4498,4498,airports.csv,2026-11-03 13:33:42.011681+00
+MTJ,KMTJ,Montrose Regional Airport,"Montrose/Delta, CO",CO,38.5098,-107.893997,5759,medium_airport,4279,4280,airports.csv,2026-11-03 13:33:42.011681+00
+LFT,KLFT,Lafayette Regional Airport,"Lafayette, LA",LA,30.205299,-91.987602,42,medium_airport,4206,4206,airports.csv,2026-11-03 13:33:42.011681+00
+CPR,KCPR,Casper-Natrona County International Airport,"Casper, WY",WY,42.907381,-106.461609,5350,medium_airport,4178,4180,airports.csv,2026-11-03 13:33:42.011681+00
+HDN,KHDN,Yampa Valley Airport,"Hayden, CO",CO,40.481201,-107.218002,6606,medium_airport,4119,4120,airports.csv,2026-11-03 13:33:42.011681+00
+KTN,PAKT,Ketchikan International Airport,"Ketchikan, AK",AK,55.35559845,-131.7140045,89,medium_airport,4036,4034,airports.csv,2026-11-03 13:33:42.011681+00
+HHH,KHXD,Hilton Head Airport,"Hilton Head, SC",SC,32.2244,-80.697502,19,medium_airport,3937,3937,airports.csv,2026-11-03 13:33:42.011681+00
+DLH,KDLH,Duluth International Airport,"Duluth, MN",MN,46.841873,-92.198746,1428,medium_airport,3924,3925,airports.csv,2026-11-03 13:33:42.011681+00
+XWA,KXWA,Williston Basin International Airport,"Williston, ND",ND,48.260863,-103.75116,2344,medium_airport,3891,3890,airports.csv,2026-11-03 13:33:42.011681+00
+GTF,KGTF,Great Falls International Airport,"Great Falls, MT",MT,47.481998,-111.371002,3680,medium_airport,3856,3855,airports.csv,2026-11-03 13:33:42.011681+00
+BLI,KBLI,Bellingham International Airport,"Bellingham, WA",WA,48.79280090332031,-122.53800201416016,170,medium_airport,3839,3839,airports.csv,2026-11-03 13:33:42.011681+00
+BQN,TJBQ,Rafael Hernández International Airport,"Aguadilla, PR",PR,18.4949,-67.129402,237,medium_airport,3823,3823,airports.csv,2026-11-03 13:33:42.011681+00
+ACY,KACY,Atlantic City International Airport,"Atlantic City, NJ",NJ,39.456201,-74.577511,75,medium_airport,3779,3783,airports.csv,2026-11-03 13:33:42.011681+00
+MBS,KMBS,MBS International Airport,"Saginaw/Bay City/Midland, MI",MI,43.533181,-84.083104,668,medium_airport,3572,3572,airports.csv,2026-11-03 13:33:42.011681+00
+ABI,KABI,Abilene Regional Airport,"Abilene, TX",TX,32.4113006592,-99.68190002440001,1791,medium_airport,3518,3520,airports.csv,2026-11-03 13:33:42.011681+00
+ACV,KACV,California Redwood Coast-Humboldt County Airport,"Arcata/Eureka, CA",CA,40.978101,-124.109,221,medium_airport,3515,3516,airports.csv,2026-11-03 13:33:42.011681+00
+AGS,KAGS,Augusta Regional At Bush Field,"Augusta, GA",GA,33.3699,-81.9645,144,medium_airport,3389,3389,airports.csv,2026-11-03 13:33:42.011681+00
+MGM,KMGM,Montgomery Regional (Dannelly Field) Airport,"Montgomery, AL",AL,32.300598,-86.393997,221,medium_airport,3307,3306,airports.csv,2026-11-03 13:33:42.011681+00
+LAN,KLAN,Capital Region International Airport,"Lansing, MI",MI,42.777582,-84.585721,861,medium_airport,3195,3196,airports.csv,2026-11-03 13:33:42.011681+00
+ROA,KROA,Roanoke–Blacksburg Regional Airport,"Roanoke, VA",VA,37.3255,-79.975403,1175,medium_airport,3186,3187,airports.csv,2026-11-03 13:33:42.011681+00
+EVV,KEVV,Evansville Regional Airport,"Evansville, IN",IN,38.0369987488,-87.5324020386,418,medium_airport,3181,3181,airports.csv,2026-11-03 13:33:42.011681+00
+MOB,KMOB,Mobile Regional Airport,"Mobile, AL",AL,30.6912,-88.242798,219,medium_airport,3151,3152,airports.csv,2026-11-03 13:33:42.011681+00
+GRK,KGRK,Killeen Regional Airport / Robert Gray Army Airfield,"Killeen, TX",TX,31.0672,-97.828903,1015,medium_airport,3096,3096,airports.csv,2026-11-03 13:33:42.011681+00
+ACK,KACK,Nantucket Memorial Airport,"Nantucket, MA",MA,41.25310135,-70.06020355,47,medium_airport,3092,3092,airports.csv,2026-11-03 13:33:42.011681+00
+BMI,KBMI,Central Illinois Regional Airport at Bloomington-Normal,"Bloomington/Normal, IL",IL,40.4771,-88.915901,871,medium_airport,2982,2983,airports.csv,2026-11-03 13:33:42.011681+00
+AZO,KAZO,Kalamazoo/Battle Creek International Airport,"Kalamazoo, MI",MI,42.232105,-85.549637,874,medium_airport,2928,2929,airports.csv,2026-11-03 13:33:42.011681+00
+LRD,KLRD,Laredo International Airport,"Laredo, TX",TX,27.5438,-99.461601,508,medium_airport,2899,2899,airports.csv,2026-11-03 13:33:42.011681+00
+RDD,KRDD,Redding Municipal Airport,"Redding, CA",CA,40.50899887,-122.2929993,505,medium_airport,2843,2844,airports.csv,2026-11-03 13:33:42.011681+00
+CMI,KCMI,University of Illinois Willard Airport,"Champaign/Urbana, IL",IL,40.039819,-88.276249,755,medium_airport,2829,2829,airports.csv,2026-11-03 13:33:42.011681+00
+YUM,KNYL,Yuma International Airport / Marine Corps Air Station Yuma,"Yuma, AZ",AZ,32.650938,-114.609375,213,medium_airport,2789,2789,airports.csv,2026-11-03 13:33:42.011681+00
+AVP,KAVP,Wilkes-Barre/Scranton International Airport,"Scranton/Wilkes-Barre, PA",PA,41.337064,-75.724232,962,medium_airport,2777,2777,airports.csv,2026-11-03 13:33:42.011681+00
+FLG,KFLG,Flagstaff Pulliam Airport,"Flagstaff, AZ",AZ,35.139757,-111.669826,7014,medium_airport,2761,2760,airports.csv,2026-11-03 13:33:42.011681+00
+MHK,KMHK,Manhattan Regional Airport,"Manhattan/Ft. Riley, KS",KS,39.14099884033203,-96.6707992553711,1057,medium_airport,2678,2679,airports.csv,2026-11-03 13:33:42.011681+00
+HLN,KHLN,Helena Regional Airport,"Helena, MT",MT,46.6068,-111.983002,3877,medium_airport,2650,2650,airports.csv,2026-11-03 13:33:42.011681+00
+CHO,KCHO,Charlottesville Albemarle Airport,"Charlottesville, VA",VA,38.13859939575195,-78.4529037475586,639,medium_airport,2641,2641,airports.csv,2026-11-03 13:33:42.011681+00
+BRO,KBRO,Brownsville South Padre Island International Airport,"Brownsville, TX",TX,25.907238,-97.425235,22,medium_airport,2495,2495,airports.csv,2026-11-03 13:33:42.011681+00
+BLV,KBLV,Scott AFB/Midamerica Airport,"Belleville, IL",IL,38.5452,-89.835197,459,medium_airport,2407,2406,airports.csv,2026-11-03 13:33:42.011681+00
+STX,TISX,Henry E. Rohlsen Airport,"Christiansted, VI",VI,17.701413,-64.802608,74,medium_airport,2370,2371,airports.csv,2026-11-03 13:33:42.011681+00
+MQT,KSAW,Marquette Sawyer Regional Airport,"Marquette, MI",MI,46.351498,-87.395884,1221,medium_airport,2294,2295,airports.csv,2026-11-03 13:33:42.011681+00
+TRI,KTRI,Tri-Cities Regional TN/VA Airport,"Bristol/Johnson City/Kingsport, TN",TN,36.475201,-82.407401,1519,medium_airport,2270,2273,airports.csv,2026-11-03 13:33:42.011681+00
+SIT,PASI,Sitka Rocky Gutierrez Airport,"Sitka, AK",AK,57.04710006713867,-135.36199951171875,21,medium_airport,2266,2266,airports.csv,2026-11-03 13:33:42.011681+00
+ELM,KELM,Elmira Corning Regional Airport,"Elmira/Corning, NY",NY,42.1599006652832,-76.8916015625,954,medium_airport,2130,2130,airports.csv,2026-11-03 13:33:42.011681+00
+GUC,KGUC,Gunnison Crested Butte Regional Airport,"Gunnison, CO",CO,38.534672,-106.934566,7680,medium_airport,2094,2094,airports.csv,2026-11-03 13:33:42.011681+00
+PAE,KPAE,Seattle Paine Field International Airport,"Everett, WA",WA,47.9063,-122.281998,606,medium_airport,2085,2085,airports.csv,2026-11-03 13:33:42.011681+00
+DJT,KDJT,President Donald J. Trump International Airport,"West Palm Beach/Palm Beach, FL",FL,26.683201,-80.095596,19,large_airport,2070,2072,airports.csv,2026-11-03 13:33:42.011681+00
+RST,KRST,Rochester International Airport,"Rochester, MN",MN,43.908298,-92.5,1317,medium_airport,2038,2038,airports.csv,2026-11-03 13:33:42.011681+00
+AEX,KAEX,Alexandria International Airport,"Alexandria, LA",LA,31.325828,-92.546702,89,medium_airport,1996,1997,airports.csv,2026-11-03 13:33:42.011681+00
+LCK,KLCK,Rickenbacker International Airport,"Columbus, OH",OH,39.813801,-82.927803,744,medium_airport,1993,1991,airports.csv,2026-11-03 13:33:42.011681+00
+MVY,KMVY,Martha's Vineyard Airport,"Martha's Vineyard, MA",MA,41.3931007385,-70.6143035889,67,small_airport,1970,1970,airports.csv,2026-11-03 13:33:42.011681+00
+FSM,KFSM,Fort Smith Regional Airport,"Fort Smith, AR",AR,35.336601,-94.367401,469,medium_airport,1957,1957,airports.csv,2026-11-03 13:33:42.011681+00
+CLL,KCLL,Easterwood Field,"College Station/Bryan, TX",TX,30.5886,-96.3638,320,medium_airport,1944,1944,airports.csv,2026-11-03 13:33:42.011681+00
+CLD,KCRQ,McClellan-Palomar Airport,"Carlsbad, CA",CA,33.1283,-117.279999,331,medium_airport,1925,1928,airports.csv,2026-11-03 13:33:42.011681+00
+ROW,KROW,Roswell Air Center Airport,"Roswell, NM",NM,33.301601,-104.530998,3671,medium_airport,1916,1916,airports.csv,2026-11-03 13:33:42.011681+00
+MLU,KMLU,Monroe Regional Airport,"Monroe, LA",LA,32.510899,-92.037697,79,medium_airport,1893,1893,airports.csv,2026-11-03 13:33:42.011681+00
+TTN,KTTN,Trenton Mercer Airport,"Trenton, NJ",NJ,40.276699,-74.813499,213,medium_airport,1886,1885,airports.csv,2026-11-03 13:33:42.011681+00
+LCH,KLCH,Lake Charles Regional Airport,"Lake Charles, LA",LA,30.126100540161133,-93.22329711914062,15,medium_airport,1869,1869,airports.csv,2026-11-03 13:33:42.011681+00
+SJT,KSJT,San Angelo Regional Mathis Field,"San Angelo, TX",TX,31.35770034790039,-100.49600219726562,1919,medium_airport,1807,1807,airports.csv,2026-11-03 13:33:42.011681+00
+TYR,KTYR,Tyler Pounds Regional Airport,"Tyler, TX",TX,32.35409927368164,-95.40239715576172,544,medium_airport,1805,1805,airports.csv,2026-11-03 13:33:42.011681+00
+ACT,KACT,Waco Regional Airport,"Waco, TX",TX,31.611299514770508,-97.23049926757812,516,medium_airport,1802,1802,airports.csv,2026-11-03 13:33:42.011681+00
+LAW,KLAW,Lawton Fort Sill Regional Airport,"Lawton/Fort Sill, OK",OK,34.567699,-98.416603,1110,medium_airport,1800,1800,airports.csv,2026-11-03 13:33:42.011681+00
+GFK,KGFK,Grand Forks International Airport,"Grand Forks, ND",ND,47.949299,-97.176102,845,medium_airport,1712,1713,airports.csv,2026-11-03 13:33:42.011681+00
+LSE,KLSE,La Crosse Regional Airport,"La Crosse, WI",WI,43.879002,-91.256699,655,medium_airport,1692,1693,airports.csv,2026-11-03 13:33:42.011681+00
+SLN,KSLN,Salina Municipal Airport,"Salina, KS",KS,38.79100036621094,-97.6521987915039,1288,medium_airport,1653,1655,airports.csv,2026-11-03 13:33:42.011681+00
+RFD,KRFD,Chicago Rockford International Airport,"Rockford, IL",IL,42.1954,-89.097198,742,medium_airport,1623,1622,airports.csv,2026-11-03 13:33:42.011681+00
+GRI,KGRI,Central Nebraska Regional Airport,"Grand Island, NE",NE,40.967498779296875,-98.30960083007812,1847,medium_airport,1612,1612,airports.csv,2026-11-03 13:33:42.011681+00
+COD,KCOD,Yellowstone Regional Airport,"Cody, WY",WY,44.520199,-109.024002,5102,medium_airport,1607,1608,airports.csv,2026-11-03 13:33:42.011681+00
+ORH,KORH,Worcester Regional Airport,"Worcester, MA",MA,42.2673,-71.875702,1009,medium_airport,1543,1547,airports.csv,2026-11-03 13:33:42.011681+00
+PLN,KPLN,Pellston Regional Airport of Emmet County Airport,"Pellston, MI",MI,45.57089996,-84.79669952,721,medium_airport,1532,1532,airports.csv,2026-11-03 13:33:42.011681+00
+RHI,KRHI,Rhinelander Oneida County Airport,"Rhinelander, WI",WI,45.63119888305664,-89.46749877929688,1624,medium_airport,1497,1497,airports.csv,2026-11-03 13:33:42.011681+00
+PRC,KPRC,Prescott Regional Airport - Ernest A. Love Field,"Prescott, AZ",AZ,34.653502,-112.419883,5045,medium_airport,1480,1480,airports.csv,2026-11-03 13:33:42.011681+00
+ADQ,PADQ,Kodiak Airport,"Kodiak, AK",AK,57.75,-152.4940033,78,medium_airport,1457,1458,airports.csv,2026-11-03 13:33:42.011681+00
+CWA,KCWA,Central Wisconsin Airport,"Mosinee, WI",WI,44.777448,-89.670238,1277,medium_airport,1411,1412,airports.csv,2026-11-03 13:33:42.011681+00
+CIU,KCIU,Chippewa County International Airport,"Sault Ste. Marie, MI",MI,46.242038,-84.462082,800,medium_airport,1408,1409,airports.csv,2026-11-03 13:33:42.011681+00
+SUX,KSUX,Sioux Gateway Airport / Brigadier General Bud Day Field,"Sioux City, IA",IA,42.397605,-96.382237,1098,medium_airport,1387,1387,airports.csv,2026-11-03 13:33:42.011681+00
+TWF,KTWF,Joslin Field Magic Valley Regional Airport,"Twin Falls, ID",ID,42.4818,-114.487999,4154,medium_airport,1338,1338,airports.csv,2026-11-03 13:33:42.011681+00
+CMX,KCMX,Houghton County Memorial Airport,"Hancock/Houghton, MI",MI,47.168399810791016,-88.48909759521484,1095,medium_airport,1321,1322,airports.csv,2026-11-03 13:33:42.011681+00
+SHR,KSHR,Sheridan County Airport,"Sheridan, WY",WY,44.76919937133789,-106.9800033569336,4021,medium_airport,1252,1252,airports.csv,2026-11-03 13:33:42.011681+00
+LWS,KLWS,Lewiston Nez Perce County Airport,"Lewiston, ID",ID,46.3745002746582,-117.01499938964844,1442,medium_airport,1247,1246,airports.csv,2026-11-03 13:33:42.011681+00
+ABR,KABR,Aberdeen Regional Airport,"Aberdeen, SD",SD,45.449100494384766,-98.42179870605469,1302,medium_airport,1239,1239,airports.csv,2026-11-03 13:33:42.011681+00
+GCC,KGCC,Northeast Wyoming Regional Airport,"Gillette, WY",WY,44.3489,-105.539001,4365,medium_airport,1233,1233,airports.csv,2026-11-03 13:33:42.011681+00
+CYS,KCYS,Cheyenne Regional Jerry Olson Field,"Cheyenne, WY",WY,41.155701,-104.811997,6159,medium_airport,1222,1222,airports.csv,2026-11-03 13:33:42.011681+00
+GUM,PGUM,Antonio B. Won Pat International Airport,"Guam, TT",TT,13.485,144.797282,298,large_airport,1218,1218,airports.csv,2026-11-03 13:33:42.011681+00
+SPS,KSPS,Wichita Falls Municipal Airport / Sheppard Air Force Base,"Wichita Falls, TX",TX,33.9888,-98.491898,1019,medium_airport,1215,1215,airports.csv,2026-11-03 13:33:42.011681+00
+SWO,KSWO,Stillwater Regional Airport,"Stillwater, OK",OK,36.162132,-97.085581,1000,medium_airport,1215,1215,airports.csv,2026-11-03 13:33:42.011681+00
+RIW,KRIW,Central Wyoming Regional Airport,"Riverton/Lander, WY",WY,43.064201,-108.459999,5525,medium_airport,1215,1214,airports.csv,2026-11-03 13:33:42.011681+00
+RKS,KRKS,Southwest Wyoming Regional Airport,"Rock Springs, WY",WY,41.5942,-109.065001,6764,medium_airport,1214,1214,airports.csv,2026-11-03 13:33:42.011681+00
+IMT,KIMT,Ford Airport,"Iron Mountain/Kingsfd, MI",MI,45.81911,-88.114557,1182,medium_airport,1213,1213,airports.csv,2026-11-03 13:33:42.011681+00
+BJI,KBJI,Bemidji Regional Airport,"Bemidji, MN",MN,47.50939941,-94.93370056,1391,medium_airport,1213,1213,airports.csv,2026-11-03 13:33:42.011681+00
+GCK,KGCK,Garden City Regional Airport,"Garden City, KS",KS,37.9275016785,-100.723999023,2891,medium_airport,1212,1212,airports.csv,2026-11-03 13:33:42.011681+00
+TXK,KTXK,Texarkana Regional Airport (Webb Field),"Texarkana, AR",AR,33.453701,-93.990997,390,medium_airport,1209,1209,airports.csv,2026-11-03 13:33:42.011681+00
+PSG,PAPG,Petersburg James A Johnson Airport,"Petersburg, AK",AK,56.80170059,-132.9450073,111,medium_airport,1208,1208,airports.csv,2026-11-03 13:33:42.011681+00
+CDV,PACV,Merle K (Mudhole) Smith Airport,"Cordova, AK",AK,60.491798,-145.477997,54,medium_airport,1208,1207,airports.csv,2026-11-03 13:33:42.011681+00
+BPT,KBPT,Jack Brooks Regional Airport,"Beaumont/Port Arthur, TX",TX,29.9508,-94.020699,15,medium_airport,1208,1208,airports.csv,2026-11-03 13:33:42.011681+00
+WRG,PAWG,Wrangell Airport,"Wrangell, AK",AK,56.48429871,-132.3699951,49,medium_airport,1208,1208,airports.csv,2026-11-03 13:33:42.011681+00
+YAK,PAYA,Yakutat Airport,"Yakutat, AK",AK,59.508717,-139.660435,33,medium_airport,1208,1207,airports.csv,2026-11-03 13:33:42.011681+00
+BET,PABE,Bethel Airport,"Bethel, AK",AK,60.77980042,-161.8379974,126,medium_airport,1206,1206,airports.csv,2026-11-03 13:33:42.011681+00
+GGG,KGGG,East Texas Regional Airport,"Longview, TX",TX,32.38399887084961,-94.71150207519531,365,medium_airport,1204,1204,airports.csv,2026-11-03 13:33:42.011681+00
+BTM,KBTM,Bert Mooney Airport,"Butte, MT",MT,45.95479965209961,-112.49700164794922,5550,medium_airport,1193,1194,airports.csv,2026-11-03 13:33:42.011681+00
+SPI,KSPI,Abraham Lincoln Capital Airport,"Springfield, IL",IL,39.844101,-89.677902,598,medium_airport,1182,1182,airports.csv,2026-11-03 13:33:42.011681+00
+JST,KJST,John Murtha Johnstown Cambria County Airport,"Johnstown, PA",PA,40.31610107421875,-78.83390045166016,2284,medium_airport,1169,1169,airports.csv,2026-11-03 13:33:42.011681+00
+MGW,KMGW,Morgantown Municipal Airport Walter L. (Bill) Hart Field,"Morgantown, WV",WV,39.643305,-79.917598,1248,medium_airport,1169,1169,airports.csv,2026-11-03 13:33:42.011681+00
+JLN,KJLN,Joplin Regional Airport,"Joplin, MO",MO,37.151798,-94.498299,981,medium_airport,1168,1168,airports.csv,2026-11-03 13:33:42.011681+00
+EAR,KEAR,Kearney Regional Airport,"Kearney, NE",NE,40.727001,-99.006798,2131,medium_airport,1167,1167,airports.csv,2026-11-03 13:33:42.011681+00
+USA,KJQF,Concord-Padgett Regional Airport,"Concord, NC",NC,35.387798,-80.709099,705,medium_airport,1160,1161,airports.csv,2026-11-03 13:33:42.011681+00
+PSE,TJPS,Mercedita International Airport,"Ponce, PR",PR,18.008301,-66.563004,29,medium_airport,1155,1154,airports.csv,2026-11-03 13:33:42.011681+00
+DIK,KDIK,Dickinson Theodore Roosevelt Regional Airport,"Dickinson, ND",ND,46.797533,-102.801905,2592,medium_airport,1131,1132,airports.csv,2026-11-03 13:33:42.011681+00
+HOB,KHOB,Lea County Regional Airport,"Hobbs, NM",NM,32.6875,-103.217003,3661,medium_airport,1113,1112,airports.csv,2026-11-03 13:33:42.011681+00
+INL,KINL,Falls International Airport,"International Falls, MN",MN,48.566200256347656,-93.4030990600586,1185,medium_airport,1102,1102,airports.csv,2026-11-03 13:33:42.011681+00
+OAJ,KOAJ,Albert J Ellis Airport,"Jacksonville/Camp Lejeune, NC",NC,34.829201,-77.612099,94,medium_airport,1086,1086,airports.csv,2026-11-03 13:33:42.011681+00
+DVL,KDVL,Devils Lake Regional Airport,"Devils Lake, ND",ND,48.115454,-98.908796,1456,medium_airport,1069,1069,airports.csv,2026-11-03 13:33:42.011681+00
+FOD,KFOD,Fort Dodge Regional Airport,"Fort Dodge, IA",IA,42.552624,-94.191237,1156,medium_airport,1065,1065,airports.csv,2026-11-03 13:33:42.011681+00
+BRD,KBRD,Brainerd Lakes Regional Airport,"Brainerd, MN",MN,46.402861,-94.129727,1232,medium_airport,1050,1051,airports.csv,2026-11-03 13:33:42.011681+00
+APN,KAPN,Alpena County Regional Airport,"Alpena, MI",MI,45.0780983,-83.56030273,690,medium_airport,1049,1049,airports.csv,2026-11-03 13:33:42.011681+00
+HIB,KHIB,Range Regional Airport,"Hibbing, MN",MN,47.384831,-92.836905,1354,medium_airport,1048,1048,airports.csv,2026-11-03 13:33:42.011681+00
+ESC,KESC,Delta County Airport,"Escanaba, MI",MI,45.723199,-87.088623,609,medium_airport,1047,1047,airports.csv,2026-11-03 13:33:42.011681+00
+CDC,KCDC,Cedar City Regional Airport,"Cedar City, UT",UT,37.70100021362305,-113.0989990234375,5622,medium_airport,1047,1047,airports.csv,2026-11-03 13:33:42.011681+00
+JMS,KJMS,Jamestown Regional Airport,"Jamestown, ND",ND,46.92969894,-98.67819977,1500,medium_airport,1045,1045,airports.csv,2026-11-03 13:33:42.011681+00
+DEC,KDEC,Decatur Airport,"Decatur, IL",IL,39.834598541259766,-88.8656997680664,682,medium_airport,1044,1044,airports.csv,2026-11-03 13:33:42.011681+00
+MCW,KMCW,Mason City Municipal Airport,"Mason City, IA",IA,43.159801,-93.329716,1213,medium_airport,1044,1045,airports.csv,2026-11-03 13:33:42.011681+00
+MEI,KMEI,Key Field / Meridian Regional Airport,"Meridian, MS",MS,32.3326,-88.7519,297,medium_airport,1044,1044,airports.csv,2026-11-03 13:33:42.011681+00
+DDC,KDDC,Dodge City Regional Airport,"Dodge City, KS",KS,37.76340103149414,-99.9655990600586,2594,medium_airport,1044,1044,airports.csv,2026-11-03 13:33:42.011681+00
+LBL,KLBL,Liberal Mid-America Regional Airport,"Liberal, KS",KS,37.0442009,-100.9599991,2885,medium_airport,1044,1044,airports.csv,2026-11-03 13:33:42.011681+00
+LAR,KLAR,Laramie Regional Airport,"Laramie, WY",WY,41.31209945678711,-105.67500305175781,7284,medium_airport,1044,1045,airports.csv,2026-11-03 13:33:42.011681+00
+PIB,KPIB,Hattiesburg Laurel Regional Airport,"Hattiesburg/Laurel, MS",MS,31.4671,-89.337097,298,medium_airport,1044,1044,airports.csv,2026-11-03 13:33:42.011681+00
+LBF,KLBF,North Platte Regional Airport Lee Bird Field,"North Platte, NE",NE,41.12620163,-100.6839981,2777,medium_airport,1043,1044,airports.csv,2026-11-03 13:33:42.011681+00
+EAU,KEAU,Chippewa Valley Regional Airport,"Eau Claire, WI",WI,44.86579895019531,-91.48429870605469,913,medium_airport,1043,1043,airports.csv,2026-11-03 13:33:42.011681+00
+BFF,KBFF,Western Neb. Rgnl/William B. Heilig Airport,"Scottsbluff, NE",NE,41.87400055,-103.5960007,3967,medium_airport,1043,1043,airports.csv,2026-11-03 13:33:42.011681+00
+VCT,KVCT,Victoria Regional Airport,"Victoria, TX",TX,28.85260009765625,-96.91850280761719,115,medium_airport,1024,1024,airports.csv,2026-11-03 13:33:42.011681+00
+SWF,KSWF,New York Stewart International Airport,"Newburgh/Poughkeepsie, NY",NY,41.50421,-74.108901,491,medium_airport,1009,1008,airports.csv,2026-11-03 13:33:42.011681+00
+HYS,KHYS,Hays Regional Airport,"Hays, KS",KS,38.844521,-99.273148,1999,medium_airport,1006,1006,airports.csv,2026-11-03 13:33:42.011681+00
+GUF,KJKA,Jack Edwards National Airport,"Gulf Shores, AL",AL,30.290501,-87.671799,17,small_airport,949,949,airports.csv,2026-11-03 13:33:42.011681+00
+PIH,KPIH,Pocatello Regional Airport,"Pocatello, ID",ID,42.9098014831543,-112.59600067138672,4452,medium_airport,908,907,airports.csv,2026-11-03 13:33:42.011681+00
+SCE,KUNV,State College Regional Airport,"State College, PA",PA,40.849374,-77.84852,1239,medium_airport,905,906,airports.csv,2026-11-03 13:33:42.011681+00
+ABY,KABY,Southwest Georgia Regional Airport,"Albany, GA",GA,31.532946,-84.196215,197,medium_airport,890,890,airports.csv,2026-11-03 13:33:42.011681+00
+EKO,KEKO,Elko Regional Airport,"Elko, NV",NV,40.82490158081055,-115.79199981689453,5140,medium_airport,889,889,airports.csv,2026-11-03 13:33:42.011681+00
+SCC,PASC,Deadhorse Airport,"Deadhorse, AK",AK,70.19470215,-148.4649963,65,medium_airport,881,881,airports.csv,2026-11-03 13:33:42.011681+00
+SCK,KSCK,Stockton Metropolitan Airport,"Stockton, CA",CA,37.893279,-121.238079,33,medium_airport,875,875,airports.csv,2026-11-03 13:33:42.011681+00
+HTS,KHTS,Tri-State Airport / Milton J. Ferguson Field,"Ashland, WV",WV,38.366699,-82.557999,828,medium_airport,857,857,airports.csv,2026-11-03 13:33:42.011681+00
+ALO,KALO,Waterloo Regional Airport,"Waterloo, IA",IA,42.557098388671875,-92.40029907226562,873,medium_airport,821,822,airports.csv,2026-11-03 13:33:42.011681+00
+PBG,KPBG,Plattsburgh International Airport,"Plattsburgh, NY",NY,44.650902,-73.468102,234,medium_airport,819,818,airports.csv,2026-11-03 13:33:42.011681+00
+PSM,KPSM,Portsmouth International Airport at Pease,"Portsmouth, NH",NH,43.0779,-70.823303,100,medium_airport,802,802,airports.csv,2026-11-03 13:33:42.011681+00
+ATY,KATY,Watertown Regional Airport,"Watertown, SD",SD,44.91400146,-97.15470123,1749,medium_airport,789,790,airports.csv,2026-11-03 13:33:42.011681+00
+OTH,KOTH,Southwest Oregon Regional Airport,"North Bend/Coos Bay, OR",OR,43.41709899902344,-124.24600219726562,17,medium_airport,781,781,airports.csv,2026-11-03 13:33:42.011681+00
+IAG,KIAG,Niagara Falls International Airport,"Niagara Falls, NY",NY,43.1073,-78.946198,589,medium_airport,747,745,airports.csv,2026-11-03 13:33:42.011681+00
+VRB,KVRB,Vero Beach Regional Airport,"Vero Beach, FL",FL,27.6556,-80.417901,24,medium_airport,722,722,airports.csv,2026-11-03 13:33:42.011681+00
+TOL,KTOL,Eugene F. Kranz Toledo Express Airport,"Toledo, OH",OH,41.5868,-83.8078,683,medium_airport,720,720,airports.csv,2026-11-03 13:33:42.011681+00
+PIR,KPIR,Pierre Regional Airport,"Pierre, SD",SD,44.38270187,-100.2860031,1744,medium_airport,714,715,airports.csv,2026-11-03 13:33:42.011681+00
+HYA,KHYA,Cape Cod Gateway Airport,"Hyannis, MA",MA,41.6693,-70.280403,54,medium_airport,708,708,airports.csv,2026-11-03 13:33:42.011681+00
+CKB,KCKB,North Central West Virginia Airport,"Clarksburg/Fairmont, WV",WV,39.2966,-80.228104,1217,medium_airport,635,636,airports.csv,2026-11-03 13:33:42.011681+00
+BIH,KBIH,Eastern Sierra Regional Airport,"Bishop, CA",CA,37.3731,-118.363998,4124,medium_airport,622,622,airports.csv,2026-11-03 13:33:42.011681+00
+WYS,KWYS,Yellowstone Airport,"West Yellowstone, MT",MT,44.6884,-111.117996,6649,medium_airport,618,618,airports.csv,2026-11-03 13:33:42.011681+00
+LAF,KLAF,Purdue University Airport,"Lafayette, IN",IN,40.412875,-86.939363,606,medium_airport,615,616,airports.csv,2026-11-03 13:33:42.011681+00
+OME,PAOM,Nome Airport,"Nome, AK",AK,64.51219940185547,-165.44500732421875,37,medium_airport,613,612,airports.csv,2026-11-03 13:33:42.011681+00
+SPN,PGSN,Saipan International Airport,"Saipan, TT",TT,15.119384,145.728848,215,medium_airport,610,610,airports.csv,2026-11-03 13:33:42.011681+00
+PQI,KPQI,Presque Isle International Airport,"Presque Isle/Houlton, ME",ME,46.688999,-68.0448,534,medium_airport,608,608,airports.csv,2026-11-03 13:33:42.011681+00
+OTZ,PAOT,Ralph Wien Memorial Airport,"Kotzebue, AK",AK,66.88469696,-162.598999,14,medium_airport,606,606,airports.csv,2026-11-03 13:33:42.011681+00
+BRW,PABR,Wiley Post Will Rogers Memorial Airport,"Barrow, AK",AK,71.285402,-156.766008,44,medium_airport,602,601,airports.csv,2026-11-03 13:33:42.011681+00
+LBE,KLBE,Arnold Palmer Regional Airport,"Latrobe, PA",PA,40.275902,-79.4048,1199,medium_airport,601,601,airports.csv,2026-11-03 13:33:42.011681+00
+SMX,KSMX,Santa Maria Public Airport Captain G Allan Hancock Field,"Santa Maria, CA",CA,34.898899,-120.457001,261,medium_airport,579,579,airports.csv,2026-11-03 13:33:42.011681+00
+FAY,KFAY,Fayetteville Regional Airport - Grannis Field,"Fayetteville, NC",NC,34.991199,-78.880302,189,medium_airport,520,520,airports.csv,2026-11-03 13:33:42.011681+00
+HGR,KHGR,Hagerstown Regional Richard A Henson Field,"Hagerstown, MD",MD,39.708771,-77.728014,703,medium_airport,508,507,airports.csv,2026-11-03 13:33:42.011681+00
+GTR,KGTR,Golden Triangle Regional Airport,"Columbus, MS",MS,33.450298,-88.5914,264,medium_airport,486,486,airports.csv,2026-11-03 13:33:42.011681+00
+FMN,KFMN,Four Corners Regional Airport,"Farmington, NM",NM,36.741199,-108.230003,5506,medium_airport,480,481,airports.csv,2026-11-03 13:33:42.011681+00
+SHD,KSHD,Shenandoah Valley Regional Airport,"Staunton, VA",VA,38.263802,-78.8964,1201,medium_airport,405,406,airports.csv,2026-11-03 13:33:42.011681+00
+EWN,KEWN,Coastal Carolina Regional Airport,"New Bern/Morehead/Beaufort, NC",NC,35.0730018616,-77.04290008539999,18,medium_airport,387,387,airports.csv,2026-11-03 13:33:42.011681+00
+BGM,KBGM,Greater Binghamton/Edwin A Link field,"Binghamton, NY",NY,42.20869827,-75.97979736,1636,medium_airport,384,384,airports.csv,2026-11-03 13:33:42.011681+00
+LWB,KLWB,Greenbrier Valley Airport,"Lewisburg, WV",WV,37.857914,-80.400438,2302,medium_airport,373,374,airports.csv,2026-11-03 13:33:42.011681+00
+PAH,KPAH,Barkley Regional Airport,"Paducah, KY",KY,37.06079864501953,-88.7738037109375,410,medium_airport,364,365,airports.csv,2026-11-03 13:33:42.011681+00
+LYH,KLYH,Lynchburg Regional Airport - Preston Glenn Field,"Lynchburg, VA",VA,37.326698,-79.200401,938,medium_airport,322,322,airports.csv,2026-11-03 13:33:42.011681+00
+AKN,PAKN,King Salmon Airport,"King Salmon, AK",AK,58.677845,-156.651965,73,medium_airport,304,304,airports.csv,2026-11-03 13:33:42.011681+00
+STC,KSTC,Saint Cloud Regional Airport,"St. Cloud, MN",MN,45.5466,-94.059898,1031,medium_airport,296,296,airports.csv,2026-11-03 13:33:42.011681+00
+PPG,NSTU,Pago Pago International Airport,"Pago Pago, TT",TT,-14.331,-170.710007,32,large_airport,198,198,airports.csv,2026-11-03 13:33:42.011681+00
+DLG,PADL,Dillingham Airport,"Dillingham, AK",AK,59.04470062,-158.5050049,81,medium_airport,197,197,airports.csv,2026-11-03 13:33:42.011681+00
+ADK,PADK,Adak Airport,"Adak Island, AK",AK,51.883564,-176.642783,18,medium_airport,174,174,airports.csv,2026-11-03 13:33:42.011681+00
+GST,PAGS,Gustavus Airport,"Gustavus, AK",AK,58.4253006,-135.7070007,35,medium_airport,172,172,airports.csv,2026-11-03 13:33:42.011681+00
+LNS,KLNS,Lancaster Airport,"Lancaster, PA",PA,40.121700286865234,-76.29609680175781,403,medium_airport,154,155,airports.csv,2026-11-03 13:33:42.011681+00
+ERI,KERI,Erie International Tom Ridge Field,"Erie, PA",PA,42.083127,-80.173867,732,medium_airport,127,128,airports.csv,2026-11-03 13:33:42.011681+00
+DHN,KDHN,Dothan Regional Airport,"Dothan, AL",AL,31.321300506591797,-85.44960021972656,401,medium_airport,74,74,airports.csv,2026-11-03 13:33:42.011681+00
+HEZ,KHEZ,Natchez–Adams County Airport / Hardy-Anders Field,"Natchez, MS",MS,31.614817,-91.297331,272,small_airport,56,56,airports.csv,2026-11-03 13:33:42.011681+00
+CSG,KCSG,Columbus Airport,"Columbus, GA",GA,32.516415,-84.939602,397,medium_airport,23,23,airports.csv,2026-11-03 13:33:42.011681+00
+BQK,KBQK,Brunswick Golden Isles Airport,"Brunswick, GA",GA,31.258801,-81.466499,26,medium_airport,4,4,airports.csv,2026-11-03 13:33:42.011681+00
+ITH,KITH,Ithaca Tompkins Regional Airport,"Ithaca/Cortland, NY",NY,42.49100112915039,-76.4583969116211,1099,medium_airport,4,4,airports.csv,2026-11-03 13:33:42.011681+00
+PHF,KPHF,Newport News Williamsburg International Airport,"Newport News/Williamsburg, VA",VA,37.131901,-76.492996,42,medium_airport,3,3,airports.csv,2026-11-03 13:33:42.011681+00

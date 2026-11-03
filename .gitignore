@@ -1,0 +1,28 @@
+﻿# Ambiente virtual
+.venv/
+venv/
+projeto-teste/
+
+# Bancos de dados
+*.duckdb
+*.duckdb.wal
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Configurações
+.env
+.env.*
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+
+# Bases originais que não serão utilizadas
+Banco/flights_2025.csv
+Banco/flights_sample.csv
+
+# Script auxiliar local
+reduzir_flights.py
