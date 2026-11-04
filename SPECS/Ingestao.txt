@@ -183,7 +183,7 @@ Durante a ingestão:
 - Nenhuma linha descartada.
 - Nenhuma deduplicação.
 - Nenhuma coluna renomeada.
-- Nenhum valor corrigido.
+- Nenhum valor corrigido (única exceção: a coluna de controle `_source_file`, seção 2.1).
 - Nenhum preenchimento de campos nulos.
 - Nenhuma normalização de dados.
 - Nenhuma aplicação de regras de negócio.
@@ -191,6 +191,32 @@ Durante a ingestão:
 Motivo: RAW deve representar os dados recebidos, preservando a fronteira entre o dado original e o dado tratado.
 
 As transformações serão responsabilidade de uma etapa posterior, de RAW para REFINED.
+
+### 2.1 METADADO DE ORIGEM (_source_file)
+
+`_source_file` é uma coluna de controle do pipeline, e não um dado recebido. Ela deve registrar o nome real do arquivo que forneceu os dados à camada RAW.
+
+Regras:
+
+- A ingestão preenche `_source_file` com o nome do arquivo lido na pasta `Banco/` (somente o nome, sem caminho), em todas as linhas das quatro tabelas.
+- Se a origem for `flights_2025_sample.csv`, esse é o valor registrado.
+- Se a origem passar a ser `flights_2025.csv`, o valor registrado muda automaticamente, pois é derivado do mapa de arquivos da seção 1.
+- Não é permitido registrar um nome fictício, genérico ou herdado de uma etapa anterior ao pipeline (por exemplo, `flights.parquet`).
+- O valor de `_source_file` presente no CSV é substituído pelo nome do arquivo lido. A coluna mantém o nome e a posição originais.
+- Se um arquivo não possuir a coluna `_source_file`, ela é acrescentada como última coluna.
+- Nenhuma outra coluna é alterada por esta regra.
+
+Motivo: o metadado de origem existe para rastrear de qual arquivo cada registro entrou no pipeline. Um nome herdado de uma exportação anterior aponta para um arquivo que o pipeline nunca leu, quebrando a rastreabilidade. Como o valor é gerado pelo pipeline, e não recebido, preenchê-lo não é correção de dado.
+
+As etapas seguintes (RAW → REFINED) devem preservar esse metadado sem alterá-lo.
+
+### 2.2 MOMENTO DA INGESTÃO (_ingested_at)
+
+`_ingested_at` permanece exatamente como recebido no CSV. A ingestão não gera nem altera esse valor.
+
+Motivo: manter a ingestão reprodutível (seção 3); um valor gerado a cada execução faria duas execuções produzirem resultados diferentes.
+
+Pendência conhecida: nos arquivos atuais, `_ingested_at` registra o momento da exportação anterior ao pipeline, e não o momento da ingestão realizada por `pipeline/ingestao.py`. A semântica definitiva dessa coluna depende de decisão posterior.
 
 ### 3. REEXECUÇÃO
 
@@ -301,7 +327,10 @@ Não manter processos ativos.
 - Não importar `flights_sample.csv`.
 - Criar as quatro tabelas no schema RAW.
 - Todas as colunas devem entrar como VARCHAR.
-- Nenhuma transformação deve ocorrer.
+- Nenhuma transformação deve ocorrer, exceto o preenchimento de `_source_file` (seção 2.1).
+- Em todas as linhas das quatro tabelas, `_source_file` é igual ao nome do arquivo lido.
+- Nenhuma linha de `raw.flights_2025` registra `flights.parquet` ou outro nome que não seja o arquivo lido.
+- `_ingested_at` é idêntico ao valor do CSV.
 - As contagens exibidas devem vir do banco.
 - Executar duas vezes deve produzir o mesmo resultado.
 - Remover um arquivo obrigatório deve interromper o processo antes de qualquer gravação.

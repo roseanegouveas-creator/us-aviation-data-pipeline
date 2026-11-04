@@ -26,3 +26,6 @@ Banco/flights_sample.csv
 
 # Script auxiliar local
 reduzir_flights.py
+
+# Configurações locais do MCP
+.mcp.json

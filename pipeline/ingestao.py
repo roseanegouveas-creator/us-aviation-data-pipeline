@@ -20,6 +20,16 @@ schema raw do DuckDB, sem aplicar regras de transformação.
    corrigir valores, preencher nulos ou aplicar regras de negócio.
    Todas as colunas são importadas como texto.
 
+   2.1 _source_file é coluna de controle do pipeline, não dado recebido:
+       recebe o nome do arquivo lido em Banco/ (sem caminho), em todas as
+       linhas. Substitui o valor do CSV (ex.: flights.parquet, herdado de
+       uma exportação anterior), mantendo nome e posição da coluna; se o
+       arquivo não a tiver, é acrescentada ao final. Única exceção à
+       proibição de corrigir valores.
+       Motivo: rastrear de qual arquivo cada registro entrou no pipeline.
+   2.2 _ingested_at permanece como recebido no CSV.
+       Motivo: manter a ingestão reprodutível.
+
 3. REEXECUÇÃO
    As tabelas são recriadas a cada execução. A gravação em blocos permite
    ler arquivos grandes sem carregar todo o conteúdo na memória.
@@ -54,6 +64,13 @@ ARQUIVOS = {
 
 LINHAS_POR_BLOCO = 500_000
 LARGURA_ROTULO = 28
+COLUNA_ORIGEM = "_source_file"
+
+
+def _registrar_origem(blocos, nome_arquivo: str):
+    for bloco in blocos:
+        bloco[COLUNA_ORIGEM] = nome_arquivo
+        yield bloco
 
 
 def _ler_csv(caminho):
@@ -90,7 +107,7 @@ def main() -> None:
 
         for arquivo, tabela in ARQUIVOS.items():
             with _ler_csv(PASTA_RAW / arquivo) as blocos:
-                registros = gravar(con, blocos, SCHEMA, tabela)
+                registros = gravar(con, _registrar_origem(blocos, arquivo), SCHEMA, tabela)
 
             total += registros
             rotulo = f"{SCHEMA.upper()}.{tabela}"

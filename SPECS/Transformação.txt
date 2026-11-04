@@ -1,0 +1,708 @@
+# SPEC — TRANSFORMAÇÃO | US AVIATION DATA PIPELINE
+
+## CONTEXTO
+
+Estou construindo um pipeline de dados em Python para analisar operações aéreas nos Estados Unidos.
+
+O projeto trabalha com dados de companhias aéreas, aeroportos, estatísticas diárias e registros individuais de voos.
+
+O foco analítico é:
+- Atrasos de voos.
+- Cancelamentos.
+- Desempenho das companhias aéreas.
+- Desempenho dos aeroportos.
+- Causas de atrasos.
+- Indicadores operacionais por período.
+
+Trabalho com spec-driven development: esta SPEC é a fonte da verdade e o código é consequência dela.
+
+Não acrescente requisitos que não estejam escritos aqui. Se alguma regra estiver ambígua, pergunte antes de escrever código.
+
+## STACK
+
+- Python 3.13 (versão mínima única do projeto; `pyproject.toml` com `requires-python = ">=3.13"` e `.python-version` fixando 3.13).
+- Dependências gerenciadas com uv.
+- DuckDB como banco de dados.
+- Pandas disponível para manipulação quando necessário.
+- SQL do DuckDB para conversão e transformação dos dados.
+- Banco: aviation.duckdb na raiz do projeto.
+- Nenhum orquestrador. Script executável pela linha de comando.
+
+## O QUE JÁ EXISTE
+
+O projeto `us-aviation-data-pipeline` possui:
+
+- `pipeline/db.py`: módulo de conexão com DuckDB.
+- `pipeline/ingestao.py`: módulo de ingestão dos arquivos CSV.
+- Schema `raw`, criado pela etapa de ingestão.
+- `aviation.duckdb`: banco principal.
+- `aviation_ui.duckdb`: banco auxiliar da interface.
+
+A conexão e a criação de schemas são realizadas por:
+
+```python
+conectar()
+criar_schema(con, nome)
+```
+
+A conexão é devolvida aberta e quem chama é responsável por fechá-la.
+
+O schema RAW contém quatro tabelas, com os dados originais importados como VARCHAR.
+
+Arquivos de origem:
+
+| Tabela RAW | Arquivo | Situação |
+|---|---|---|
+| raw.airlines | airlines.csv | Oficial |
+| raw.airports | airports.csv | Oficial |
+| raw.daily_airport_stats | daily_airport_stats.csv | Oficial |
+| raw.flights_2025 | flights_2025_sample.csv | **Fonte provisória** |
+
+### Origem dos dados de voos (fonte provisória)
+
+O arquivo oficial de voos é `flights_2025.csv`, que ainda não está disponível na pasta `Banco/`.
+
+Enquanto ele não for disponibilizado:
+
+- `raw.flights_2025` é carregada a partir de `flights_2025_sample.csv` (120.000 registros), identificada explicitamente como fonte provisória.
+- Resultados obtidos com a amostra não validam o conjunto completo: estrutura, quantidade de registros, duplicidades, chave candidata e precisão decimal precisam ser revalidadas com `flights_2025.csv`.
+
+Metadado de origem: a Ingestão SPEC (seção 2.1) define que `_source_file` registra o nome real do arquivo lido, e não o nome herdado do CSV (a amostra atual traz `flights.parquet`). A transformação preserva o valor que estiver em RAW, sem corrigi-lo.
+
+---
+
+# ARTEFATO A PRODUZIR
+
+`pipeline/transformacao.py`
+
+Executável com:
+
+```powershell
+uv run python -m pipeline.transformacao
+```
+
+---
+
+# SPEC
+
+## 1. ESCOPO
+
+Lê dados do schema `raw` e escreve no schema `refined`.
+
+Entram quatro tabelas:
+
+| Origem | Destino |
+|---|---|
+| raw.airlines | refined.companhias_aereas |
+| raw.airports | refined.aeroportos |
+| raw.daily_airport_stats | refined.estatisticas_diarias_aeroportos |
+| raw.flights_2025 | refined.voos_2025 |
+
+Nenhuma tabela RAW pode ser modificada.
+
+Não excluir tabelas ou registros da camada RAW.
+
+### Período dos dados
+
+Preservar todos os registros recebidos, inclusive os de 2026.
+
+Não aplicar filtro de ano em nenhuma tabela.
+
+Motivo: a camada REFINED deve representar os dados recebidos após a padronização, sem limitar artificialmente o período disponível.
+
+As análises específicas de 2025 poderão aplicar filtros posteriormente, na camada analítica.
+
+## 2. NOMES DAS TABELAS E COLUNAS
+
+Os nomes das tabelas e de todas as colunas da camada REFINED devem ser traduzidos para português, utilizando o padrão snake_case.
+
+A camada RAW permanece integralmente em inglês, com os nomes originais dos arquivos.
+
+Motivo: o vocabulário utilizado nas consultas SQL e nos JOINs será em português, seguindo o mesmo padrão adotado no projeto Olist.
+
+Nenhuma coluna deve ser descartada.
+
+Nenhuma coluna deve permanecer em inglês na camada REFINED, inclusive os campos de metadados.
+
+### 2.1 Mapa das tabelas
+
+| RAW | REFINED |
+|---|---|
+| airlines | companhias_aereas |
+| airports | aeroportos |
+| daily_airport_stats | estatisticas_diarias_aeroportos |
+| flights_2025 | voos_2025 |
+
+### 2.2 airlines → companhias_aereas
+
+| Coluna original | Coluna REFINED |
+|---|---|
+| airline_code | codigo_companhia |
+| airline | companhia_aerea |
+| flights | quantidade_voos |
+| on_time_arrival_rate | taxa_chegadas_no_horario |
+| cancel_rate | taxa_cancelamento |
+| first_flight_date | data_primeiro_voo |
+| last_flight_date | data_ultimo_voo |
+| _source_file | arquivo_origem |
+| _ingested_at | data_ingestao |
+
+### 2.3 airports → aeroportos
+
+| Coluna original | Coluna REFINED |
+|---|---|
+| iata_code | codigo_iata |
+| icao_code | codigo_icao |
+| airport_name | nome_aeroporto |
+| city | cidade |
+| state | estado |
+| latitude | latitude |
+| longitude | longitude |
+| elevation_ft | altitude_pes |
+| airport_type | tipo_aeroporto |
+| departures | quantidade_partidas |
+| arrivals | quantidade_chegadas |
+| _source_file | arquivo_origem |
+| _ingested_at | data_ingestao |
+
+### 2.4 daily_airport_stats → estatisticas_diarias_aeroportos
+
+| Coluna original | Coluna REFINED |
+|---|---|
+| flight_date | data_voo |
+| airport | aeroporto |
+| departures_scheduled | partidas_programadas |
+| cancelled | voos_cancelados |
+| diverted | voos_desviados |
+| dep_delay_mean | atraso_medio_partida |
+| dep_del15_rate | taxa_atrasos_partida_15min |
+| arr_del15_rate | taxa_atrasos_chegada_15min |
+| weather_delay_minutes | atraso_clima_minutos |
+| nas_delay_minutes | atraso_nas_minutos |
+| carrier_delay_minutes | atraso_companhia_minutos |
+| late_aircraft_delay_minutes | atraso_aeronave_anterior_minutos |
+| cancel_rate | taxa_cancelamento |
+| _source_file | arquivo_origem |
+| _ingested_at | data_ingestao |
+
+### 2.5 flights_2025 → voos_2025
+
+| Coluna original | Coluna REFINED |
+|---|---|
+| flight_date | data_voo |
+| year | ano |
+| month | mes |
+| day_of_week | dia_semana |
+| airline_code | codigo_companhia |
+| airline | companhia_aerea |
+| tail_number | numero_matricula_aeronave |
+| flight_number | numero_voo |
+| origin | origem |
+| origin_city | cidade_origem |
+| origin_state | estado_origem |
+| dest | destino |
+| dest_city | cidade_destino |
+| dest_state | estado_destino |
+| sched_dep_time | horario_partida_programado |
+| dep_time | horario_partida_real |
+| dep_delay | atraso_partida |
+| dep_del15 | atraso_partida_15min |
+| dep_time_block | faixa_horario_partida |
+| taxi_out | tempo_taxi_saida |
+| wheels_off | horario_decolagem |
+| wheels_on | horario_pouso |
+| taxi_in | tempo_taxi_chegada |
+| sched_arr_time | horario_chegada_programado |
+| arr_time | horario_chegada_real |
+| arr_delay | atraso_chegada |
+| arr_del15 | atraso_chegada_15min |
+| cancelled | cancelado |
+| cancellation_code | codigo_cancelamento |
+| cancellation_reason | motivo_cancelamento |
+| diverted | desviado |
+| sched_elapsed_time | tempo_total_programado |
+| actual_elapsed_time | tempo_total_real |
+| air_time | tempo_voo |
+| distance | distancia |
+| carrier_delay | atraso_companhia |
+| weather_delay | atraso_clima |
+| nas_delay | atraso_nas |
+| security_delay | atraso_seguranca |
+| late_aircraft_delay | atraso_aeronave_anterior |
+| _source_file | arquivo_origem |
+| _ingested_at | data_ingestao |
+
+Nenhuma coluna fora dos mapas deve ser criada ou removida.
+
+Os nomes definidos acima são literais e devem ser utilizados exatamente como estão.
+
+## 3. TIPOS
+
+As conversões devem ser realizadas pelo DuckDB, utilizando SQL.
+
+Não utilizar Pandas para trazer os dados à memória exclusivamente para converter tipos.
+
+### 3.1 companhias_aereas
+
+| Coluna | Tipo de destino |
+|---|---|
+| codigo_companhia | VARCHAR |
+| companhia_aerea | VARCHAR |
+| quantidade_voos | BIGINT |
+| taxa_chegadas_no_horario | DECIMAL(8,5) |
+| taxa_cancelamento | DECIMAL(8,5) |
+| data_primeiro_voo | DATE |
+| data_ultimo_voo | DATE |
+| arquivo_origem | VARCHAR |
+| data_ingestao | TIMESTAMPTZ |
+
+### 3.2 aeroportos
+
+| Coluna | Tipo de destino |
+|---|---|
+| codigo_iata | VARCHAR |
+| codigo_icao | VARCHAR |
+| nome_aeroporto | VARCHAR |
+| cidade | VARCHAR |
+| estado | VARCHAR |
+| latitude | DECIMAL(10,6) |
+| longitude | DECIMAL(10,6) |
+| altitude_pes | INTEGER |
+| tipo_aeroporto | VARCHAR |
+| quantidade_partidas | BIGINT |
+| quantidade_chegadas | BIGINT |
+| arquivo_origem | VARCHAR |
+| data_ingestao | TIMESTAMPTZ |
+
+### 3.3 estatisticas_diarias_aeroportos
+
+| Coluna | Tipo de destino |
+|---|---|
+| data_voo | DATE |
+| aeroporto | VARCHAR |
+| partidas_programadas | BIGINT |
+| voos_cancelados | BIGINT |
+| voos_desviados | BIGINT |
+| atraso_medio_partida | DECIMAL(10,4) |
+| taxa_atrasos_partida_15min | DECIMAL(8,5) |
+| taxa_atrasos_chegada_15min | DECIMAL(8,5) |
+| atraso_clima_minutos | BIGINT |
+| atraso_nas_minutos | BIGINT |
+| atraso_companhia_minutos | BIGINT |
+| atraso_aeronave_anterior_minutos | BIGINT |
+| taxa_cancelamento | DECIMAL(8,5) |
+| arquivo_origem | VARCHAR |
+| data_ingestao | TIMESTAMPTZ |
+
+atraso_medio_partida usa DECIMAL(10,4), e não DECIMAL(10,2), porque a origem possui até 4 casas decimais (106.869 de 202.872 linhas). DECIMAL(10,2) arredondaria esses valores.
+
+### 3.4 voos_2025
+
+| Coluna | Tipo de destino |
+|---|---|
+| data_voo | DATE |
+| ano | INTEGER |
+| mes | INTEGER |
+| dia_semana | INTEGER |
+| codigo_companhia | VARCHAR |
+| companhia_aerea | VARCHAR |
+| numero_matricula_aeronave | VARCHAR |
+| numero_voo | INTEGER |
+| origem | VARCHAR |
+| cidade_origem | VARCHAR |
+| estado_origem | VARCHAR |
+| destino | VARCHAR |
+| cidade_destino | VARCHAR |
+| estado_destino | VARCHAR |
+| horario_partida_programado | INTEGER |
+| horario_partida_real | INTEGER |
+| atraso_partida | DECIMAL(10,2) |
+| atraso_partida_15min | INTEGER |
+| faixa_horario_partida | VARCHAR |
+| tempo_taxi_saida | DECIMAL(10,2) |
+| horario_decolagem | INTEGER |
+| horario_pouso | INTEGER |
+| tempo_taxi_chegada | DECIMAL(10,2) |
+| horario_chegada_programado | INTEGER |
+| horario_chegada_real | INTEGER |
+| atraso_chegada | DECIMAL(10,2) |
+| atraso_chegada_15min | INTEGER |
+| cancelado | BOOLEAN |
+| codigo_cancelamento | VARCHAR |
+| motivo_cancelamento | VARCHAR |
+| desviado | BOOLEAN |
+| tempo_total_programado | INTEGER |
+| tempo_total_real | DECIMAL(10,2) |
+| tempo_voo | DECIMAL(10,2) |
+| distancia | INTEGER |
+| atraso_companhia | DECIMAL(10,2) |
+| atraso_clima | DECIMAL(10,2) |
+| atraso_nas | DECIMAL(10,2) |
+| atraso_seguranca | DECIMAL(10,2) |
+| atraso_aeronave_anterior | DECIMAL(10,2) |
+| arquivo_origem | VARCHAR |
+| data_ingestao | TIMESTAMPTZ |
+
+### Regras de tipagem
+
+Datas:
+
+- data_voo: DATE.
+- data_primeiro_voo: DATE.
+- data_ultimo_voo: DATE.
+- data_ingestao: TIMESTAMPTZ.
+
+Contagens:
+
+- Quantidades de voos, aeroportos, cancelamentos e desvios devem utilizar BIGINT quando especificado.
+- Indicadores binários devem utilizar INTEGER ou BOOLEAN conforme o mapa.
+
+Valores decimais:
+
+- Coordenadas geográficas devem utilizar DECIMAL(10,6).
+- Taxas e percentuais devem utilizar DECIMAL(8,5).
+- Atrasos e tempos decimais devem utilizar DECIMAL(10,2), exceto atraso_medio_partida, que utiliza DECIMAL(10,4).
+
+Identificadores:
+
+- codigo_companhia, codigo_iata, codigo_icao, numero_matricula_aeronave, origem e destino permanecem VARCHAR.
+
+Motivo: códigos de companhias, aeroportos e aeronaves são identificadores, não números para operações matemáticas.
+
+Horários:
+
+- horario_partida_programado, horario_partida_real, horario_decolagem, horario_pouso, horario_chegada_programado e horario_chegada_real permanecem INTEGER.
+- Não converter automaticamente esses campos para TIME.
+
+Motivo: os dados utilizam representação numérica HHMM, e a conversão para horário exigiria regras adicionais para valores especiais, horários após a meia-noite e eventuais valores inválidos.
+
+## 4. CONVERSÃO E VALIDAÇÃO ESTRITA
+
+Toda conversão deve ser estrita.
+
+Utilizar CAST e funções explícitas do DuckDB.
+
+Não utilizar:
+
+- TRY_CAST.
+- TRY_STRPTIME.
+- errors="coerce".
+- Conversões que transformem valores inválidos silenciosamente em NULL.
+
+Todas as conversões numéricas e de datas devem validar o formato original antes de executar a conversão.
+
+Não basta utilizar CAST diretamente, pois o DuckDB pode arredondar ou interpretar valores que não correspondem ao formato esperado. Exemplos verificados no DuckDB:
+
+- `CAST('1.5' AS INTEGER)` devolve 2.
+- `CAST('1.234' AS DECIMAL(10,2))` devolve 1.23.
+- `CAST('2025-01-01 10:00' AS DATE)` devolve 2025-01-01, descartando a hora.
+
+Regras:
+
+- INTEGER: rejeitar casas decimais, inclusive quando o valor puder ser arredondado pelo DuckDB.
+- BIGINT: mesma regra de INTEGER.
+- DECIMAL(p,s): rejeitar mais casas decimais do que a escala s. Não arredondar.
+- DECIMAL(p,s): rejeitar mais de p − s dígitos inteiros, para evitar overflow. Zeros à esquerda não contam para esse limite.
+- DATE: aceitar somente o formato YYYY-MM-DD.
+- TIMESTAMPTZ: aceitar somente o formato `YYYY-MM-DD HH:MM:SS[.ffffff]±HH[:MM]`. Data, hora e fuso horário são obrigatórios; até 6 casas de fração de segundo.
+- Notação científica, como 1e3, não será aceita.
+- Espaços nas extremidades e sinais + e - serão aceitos nos números. Datas e timestamps não aceitam espaços nas extremidades.
+
+Exemplos:
+
+| Valor original | INTEGER | DECIMAL(10,2) |
+|---|---|---|
+| 10 | Aceita | Aceita |
+| 1.5 | Rejeita | Aceita |
+| 1.234 | Rejeita | Rejeita |
+| +10 | Aceita | Aceita |
+| -10 | Aceita | Aceita |
+| " 10 " (com espaços) | Aceita | Aceita |
+| 1e3 | Rejeita | Rejeita |
+| 123456789.1 | Rejeita | Rejeita (9 dígitos inteiros; máximo 8) |
+
+Quando uma conversão não atender ao formato, utilizar error() no SQL do DuckDB para interromper a execução.
+
+Ao falhar uma conversão:
+
+1. Identificar a tabela.
+2. Identificar a coluna.
+3. Apresentar um exemplo do valor inválido.
+4. Executar ROLLBACK.
+5. Encerrar com sys.exit(1).
+
+Motivo: um NULL ou valor alterado pela conversão fica indistinguível do dado verdadeiro recebido na origem. A conversão não pode esconder problemas nos dados.
+
+### 4.1 BOOLEAN
+
+Para as colunas booleanas, utilizar CAST direto do DuckDB.
+
+São aceitos os formatos reconhecidos pelo DuckDB, incluindo:
+
+- 0 e 1
+- true e false
+- t e f
+- yes e no
+
+A base atual apresenta 0 e 1.
+
+Motivo: esses formatos são inequívocos; o CAST rejeita qualquer outro valor (por exemplo, 2) sem arredondar.
+
+### 4.2 Exceção: coordenadas geográficas
+
+latitude e longitude (DECIMAL(10,6)) podem receber mais de 6 casas decimais e são arredondadas para 6 casas pelo CAST.
+
+As demais regras continuam valendo para essas colunas: no máximo 4 dígitos inteiros, sem notação científica.
+
+Motivo: 73 de 361 aeroportos possuem de 13 a 15 casas decimais (por exemplo, 35.2140007019043), que são ruído de representação em ponto flutuante de 32 bits. Seis casas equivalem a cerca de 11 cm. Sem esta exceção, a transformação nunca seria concluída com os dados atuais.
+
+## 5. DUPLICATAS E CHAVES
+
+Nenhuma duplicidade deve ser removida sem uma regra documentada.
+
+Chaves:
+
+| Tabela | Chave | Situação |
+|---|---|---|
+| companhias_aereas | codigo_companhia | Validada |
+| aeroportos | codigo_iata | Validada |
+| estatisticas_diarias_aeroportos | data_voo + aeroporto | Validada |
+| voos_2025 | data_voo + codigo_companhia + numero_voo + origem + destino + horario_partida_programado | **Provisória** |
+
+A chave de voos_2025 não apresentou repetições na amostra (120.000 registros), mas ainda não foi validada na base completa.
+
+A identificação de linhas integralmente repetidas e de conflitos deve considerar todas as colunas da tabela, inclusive:
+
+- arquivo_origem
+- data_ingestao
+
+Não comparar somente as colunas de negócio.
+
+Política de duplicidade (**provisória**, até a validação da base completa):
+
+- Linhas integralmente repetidas devem ser identificadas e contabilizadas.
+- Chaves repetidas com conteúdos diferentes devem ser apresentadas como conflitos, com contagem e até 5 exemplos.
+- Não escolher automaticamente um registro conflitante.
+- Não eliminar registros.
+- A presença de duplicidades ou conflitos não interrompe a execução.
+
+Motivo: a transformação não pode decidir silenciosamente qual registro representa a informação correta.
+
+## 6. NULOS
+
+Nenhuma linha deve ser eliminada por conter valores nulos.
+
+Nenhum NULL deve ser preenchido automaticamente.
+
+Exemplos encontrados na amostra:
+
+| Tabela | Coluna original | Nulos |
+|---|---|---:|
+| daily_airport_stats | dep_delay_mean | 831 |
+| daily_airport_stats | dep_del15_rate | 831 |
+| daily_airport_stats | arr_del15_rate | 886 |
+| flights_2025 | tail_number | 207 |
+| flights_2025 | dep_time | 1.704 |
+| flights_2025 | dep_delay | 1.708 |
+| flights_2025 | arr_delay | 2.131 |
+| flights_2025 | cancellation_code | 118.216 |
+| flights_2025 | cancellation_reason | 118.216 |
+| flights_2025 | carrier_delay | 93.972 |
+| flights_2025 | weather_delay | 93.972 |
+| flights_2025 | nas_delay | 93.972 |
+| flights_2025 | security_delay | 93.972 |
+| flights_2025 | late_aircraft_delay | 93.972 |
+
+Os valores acima são referentes exclusivamente à amostra enviada.
+
+Exemplos de interpretação:
+
+- Um voo cancelado pode não possuir horário efetivo de partida.
+- Um voo sem atraso pode não possuir detalhamento de causas de atraso.
+- Um aeroporto pode não possuir uma média de atraso calculável em determinado dia.
+
+A camada REFINED não deve corrigir ou interpretar essas situações.
+
+Motivo: a ausência de informação pode representar uma característica legítima da operação aérea.
+
+## 7. METADADOS DE INGESTÃO
+
+As colunas abaixo devem ser preservadas e traduzidas, nas quatro tabelas REFINED:
+
+| RAW | REFINED |
+|---|---|
+| _source_file | arquivo_origem |
+| _ingested_at | data_ingestao |
+
+Tipos:
+
+- arquivo_origem: VARCHAR.
+- data_ingestao: TIMESTAMPTZ.
+
+A transformação deve preservar esses metadados exatamente como estão em RAW, sem alterar sua origem:
+
+- arquivo_origem recebe o valor de `_source_file`, que, pela Ingestão SPEC (seção 2.1), é o nome real do arquivo lido. A transformação não recalcula, substitui nem corrige esse valor.
+- data_ingestao recebe o valor de `_ingested_at` convertido para TIMESTAMPTZ. Nos arquivos atuais, esse valor registra o momento da exportação anterior ao pipeline (Ingestão SPEC, seção 2.2).
+
+Motivo: esses campos permitem rastrear a origem do registro e o momento em que foi ingerido.
+
+Não remover os metadados durante a transformação.
+
+## 8. SAÍDA NA TELA
+
+Uma linha por tabela, no formato:
+
+```text
+refined.companhias_aereas                 X -> X linhas
+refined.aeroportos                        X -> X linhas
+refined.estatisticas_diarias_aeroportos   X -> X linhas
+refined.voos_2025                         X -> X linhas
+
+TOTAL                                     X -> X linhas
+```
+
+Abaixo de cada tabela, apresentar:
+
+- Quantidade de registros na origem.
+- Quantidade de registros no destino.
+- Quantidade de linhas integralmente repetidas.
+- Quantidade de conflitos de chave, com até 5 exemplos.
+- Quantidade de nulos mantidos por coluna.
+
+A listagem de nulos deve apresentar somente as colunas que possuem valores nulos.
+
+Quando nenhuma coluna possuir nulos, apresentar:
+
+```text
+Nulos mantidos: nenhum
+```
+
+As contagens devem vir diretamente do banco DuckDB.
+
+Separar milhares utilizando ponto.
+
+Reconfigurar stdout para UTF-8.
+
+Motivo: a saída é o instrumento de conferência da transformação e deve permitir identificar diferenças entre RAW e REFINED.
+
+## 9. REEXECUÇÃO
+
+Utilizar CREATE OR REPLACE TABLE.
+
+Nunca acrescentar registros de uma execução anterior.
+
+Executar dez vezes deve produzir o mesmo resultado de uma única execução, considerando a mesma origem.
+
+Motivo: permitir reexecuções durante o desenvolvimento sem acumular dados.
+
+## 10. ERRO
+
+Antes de iniciar a transformação, verificar a existência das quatro tabelas:
+
+- raw.airlines
+- raw.airports
+- raw.daily_airport_stats
+- raw.flights_2025
+
+Se faltar qualquer tabela:
+
+1. Informar todas as tabelas ausentes.
+2. Orientar a execução de:
+
+```powershell
+uv run python -m pipeline.ingestao
+```
+
+3. Encerrar com sys.exit(1).
+4. Não realizar transformação parcial.
+
+Motivo: impedir que o banco REFINED seja atualizado parcialmente.
+
+## 11. TRANSAÇÃO E ATOMICIDADE
+
+As quatro tabelas devem ser transformadas dentro de uma única transação.
+
+Fluxo:
+
+1. Iniciar transação.
+2. Transformar as quatro tabelas.
+3. Validar as contagens de registros.
+4. Validar os nulos.
+5. Confirmar a transação somente se todas as validações passarem.
+6. Em qualquer falha, executar ROLLBACK.
+
+Motivo: impedir que uma falha na quarta tabela deixe as três primeiras atualizadas e a quarta desatualizada.
+
+## 12. INTEGRIDADE RAW × REFINED
+
+Após cada transformação, comparar:
+
+- Quantidade de linhas na origem e no destino.
+- Quantidade de nulos em cada coluna correspondente.
+
+Se qualquer contagem divergir:
+
+- Informar tabela e coluna.
+- Apresentar quantidade esperada e quantidade encontrada.
+- Executar ROLLBACK.
+- Encerrar com sys.exit(1).
+
+Motivo: a camada REFINED precisa preservar a integridade dos registros recebidos.
+
+---
+
+# CRITÉRIOS DE ACEITE
+
+- Quatro tabelas criadas no schema refined.
+- Nomes das quatro tabelas em português, exatamente conforme o mapa.
+- Todas as colunas renomeadas para português, exatamente conforme os mapas.
+- Nenhuma coluna em inglês na camada REFINED.
+- Nenhuma tabela RAW modificada.
+- Nenhum registro filtrado por ano.
+- Todas as colunas de origem preservadas.
+- Tipos conforme o mapa desta SPEC.
+- Identificadores continuam VARCHAR.
+- Datas convertidas corretamente para DATE.
+- Campos de metadados preservados e traduzidos.
+- Nulos depois da transformação iguais aos nulos antes, coluna por coluna.
+- Nenhuma conversão inválida transformada silenciosamente em NULL.
+- Nenhum valor arredondado ou truncado pela conversão, exceto latitude e longitude (seção 4.2).
+- Valores fora do formato do tipo interrompem a execução com tabela, coluna e valor.
+- Nenhuma duplicidade eliminada sem regra aprovada.
+- Contagens de origem e destino conferidas diretamente no DuckDB.
+- Qualquer falha desfaz a transformação inteira (ROLLBACK).
+- Reexecução sem duplicar registros.
+- Execução encerrada automaticamente e sem deixar processos ativos.
+
+---
+
+# PONTOS PENDENTES
+
+A SPEC não está totalmente fechada até que os pontos abertos sejam resolvidos.
+
+| # | Ponto | Situação |
+|---|---|---|
+| 1 | **Base completa de voos:** disponibilizar `flights_2025.csv` e validar estrutura, quantidade de registros, duplicidades, chave candidata e precisão decimal. | Aberto |
+| 2 | **Chave de voos_2025:** validar a chave provisória (seção 5) na base completa. | Aberto (provisória em uso) |
+| 3 | **Política de duplicidades:** confirmar a política provisória (identificar, contabilizar e não remover) após a validação da base completa. | Aberto (provisória em uso) |
+| 4 | **Metadados de voos:** regra definida na Ingestão SPEC (seção 2.1): `_source_file` registra o arquivo realmente lido. Implementado em `pipeline/ingestao.py`; `raw.flights_2025` e `refined.voos_2025` registram `flights_2025_sample.csv`. | Resolvido |
+| 9 | **Semântica de data_ingestao:** hoje reflete a exportação anterior ao pipeline, não a ingestão (Ingestão SPEC, seção 2.2). | Aberto |
+| 5 | **Metadados nas quatro tabelas:** arquivo_origem e data_ingestao permanecem nas quatro tabelas REFINED. | Resolvido |
+| 6 | **Precisão decimal:** validada na amostra; atraso_medio_partida alterado para DECIMAL(10,4) e exceção de coordenadas definida (seção 4.2). Revalidar com a base completa. | Resolvido para a amostra |
+| 7 | **Horários HHMM:** permanecem inteiros nesta etapa. Não será realizada conversão para TIME. | Resolvido |
+| 8 | **Versão do Python:** projeto padronizado em Python 3.13. | Resolvido |
+
+---
+
+# ENTREGA
+
+Para o arquivo pipeline/transformacao.py:
+
+1. Apresentar a SPEC como docstring no topo do arquivo, incluindo a justificativa de cada regra.
+2. Apresentar o código completo.
+3. Utilizar comentários apenas quando a decisão não for evidente pelo código.
+4. Apresentar uma lista final de todas as premissas que não estavam na SPEC.
+
+Se a lista de premissas não estiver vazia, a SPEC deve ser revisada antes de considerar o artefato concluído.
+
+**Princípio central:** a SPEC é a fonte da verdade. O código é consequência dela.
