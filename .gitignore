@@ -29,3 +29,10 @@ reduzir_flights.py
 
 # Configurações locais do MCP
 .mcp.json
+
+# Cobertura de testes
+.coverage
+htmlcov/
+
+# Arquivos temporários
+no -- uv.lock option (press RETURN)

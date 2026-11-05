@@ -1,0 +1,14 @@
+Os dados utilizados neste repositório são provenientes do conjunto **US Flight Delays and Cancellations 2025–2026**, publicado no Kaggle e disponibilizado aqui para fins de análise e estudo.
+
+Fonte: https://www.kaggle.com/datasets/samuelpombourcq/us-flight-delays-and-cancellations-2025-2026
+
+Autoria: Samuel Pombourcq (conforme identificação do publicador no Kaggle).
+
+Licença: Creative Commons CC0 1.0 Universal (Public Domain Dedication)  
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Neste projeto, foi utilizado exclusivamente o recorte referente ao ano de 2025, contemplando os 12 meses completos. A seleção foi realizada devido ao grande volume do conjunto de dados original.
+
+A licença CC0 1.0 permite copiar, modificar, distribuir e utilizar o material, inclusive para fins comerciais, sem necessidade de solicitar autorização ou atribuir autoria, na medida permitida pela legislação aplicável.
+
+O código-fonte, as consultas SQL e os materiais de desenvolvimento deste repositório são de autoria do projeto e não estão automaticamente abrangidos pela licença CC0 aplicada aos dados.
