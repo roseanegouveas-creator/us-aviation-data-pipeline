@@ -1,0 +1,9 @@
+[theme]
+base = "light"
+backgroundColor = "#f4f6f8"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#1d2433"
+primaryColor = "#1f7a68"
+
+[browser]
+gatherUsageStats = false
