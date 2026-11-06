@@ -16,10 +16,6 @@ dev = [
     "ruff>=0.17.3",
 ]
 
-[tool.pytest.ini_options]
-testpaths = ["test"]
-pythonpath = ["."]
-
 [tool.coverage.run]
 source = ["."]
 omit = [
