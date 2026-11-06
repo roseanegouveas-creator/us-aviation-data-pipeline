@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-import painel
+from dashboard import painel
 
 st.set_page_config(page_title="Aviação EUA | Visão da Operação", layout="wide")
 

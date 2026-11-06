@@ -808,7 +808,7 @@ import duckdb
 import pandas as pd
 import plotly.express as px
 
-CAMINHO_BANCO = Path(__file__).resolve().parent / "aviation.duckdb"
+CAMINHO_BANCO = Path(__file__).resolve().parent.parent / "aviation.duckdb"
 
 # Estrutura documentada na SPEC (seção 3). A ordem das chaves é a ordem de leitura.
 COLUNAS = {

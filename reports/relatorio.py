@@ -1,7 +1,7 @@
 """
 relatorio.py — Etapa 4.5: relatório HTML independente do dashboard.
 
-Gera `relatorio.html` na raiz: uma fotografia estática do painel aprovado
+:Gera `reports/relatorio.html` uma fotografia estática do painel aprovado
 (app.py), para envio por e-mail e apresentação à diretoria.
 
 - Dados: `painel.ler()` (somente leitura, conexão fechada ao final da leitura).
@@ -16,7 +16,7 @@ Gera `relatorio.html` na raiz: uma fotografia estática do painel aprovado
   Streamlit, servidor Python ou DuckDB.
 - Não importa Streamlit.
 
-Uso: uv run python relatorio.py
+Uso: uv run python -m reports.relatorio
 """
 
 import sys
@@ -24,7 +24,7 @@ from datetime import datetime
 from html import escape
 from pathlib import Path
 
-import painel
+from dashboard import painel
 
 SAIDA = Path(__file__).resolve().parent / "relatorio.html"
 

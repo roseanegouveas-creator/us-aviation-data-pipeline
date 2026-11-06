@@ -47,7 +47,7 @@ O pipeline está organizado em três camadas:
 
 Camada responsável por armazenar os dados brutos de origem, preservando os arquivos utilizados no processo de ingestão.
 
-Os arquivos dessa camada estão localizados na pasta `raw/`.
+Os arquivos dessa camada estão localizados na pasta `data/raw/`.
 
 ### REFINED
 
@@ -103,17 +103,17 @@ Desenvolvido com Streamlit e Plotly, permite explorar os indicadores e as análi
 Para executar:
 
 ```bash
-uv run streamlit run app.py
+uv run streamlit run dashboard/app.py
 ```
 
 **Relatório HTML**
 
-Relatório analítico gerado a partir dos dados processados, disponibilizado no arquivo `relatorio.html`.
+Relatório analítico gerado a partir dos dados processados, disponibilizado no arquivo `reports/relatorio.html`.
 
 Para gerar novamente:
 
 ```bash
-uv run python relatorio.py
+uv run python -m reports.relatorio
 ```
 
 ## Tecnologias utilizadas
@@ -133,29 +133,38 @@ uv run python relatorio.py
 ```text
 us-aviation-data-pipeline/
 │
-├── raw/                       # Dados brutos de origem
+├── data/
+│   └── raw/                       # Dados brutos de origem
 │
 ├── pipeline/
-│   ├── db.py                  # Configurações do banco de dados
-│   ├── ingestao.py             # Processo de ingestão
-│   ├── transformacao.py        # Processo de transformação
-│   └── marts.py                # Construção dos Marts
+│   ├── db.py                      # Configurações do banco de dados
+│   ├── ingestao.py                # Processo de ingestão
+│   ├── transformacao.py           # Processo de transformação
+│   └── marts.py                   # Construção dos Marts
 │
 ├── sql/
-│   └── marts/                  # 12 consultas SQL analíticas
+│   └── marts/                     # 12 consultas SQL analíticas
 │
-├── test/                       # Testes automatizados
+├── dashboard/
+│   ├── __init__.py
+│   ├── app.py                     # Aplicação Streamlit
+│   ├── painel.py                  # Indicadores e visualizações
+│   └── ui.py                      # Interface auxiliar
 │
-├── app.py                      # Aplicação Streamlit
-├── painel.py                   # Indicadores e visualizações
-├── relatorio.py                # Geração do relatório HTML
-├── relatorio.html              # Relatório gerado
-├── ui.py                       # Interface auxiliar
+├── reports/
+│   ├── __init__.py
+│   └── relatorio.py               # Geração do relatório HTML
 │
-├── pyproject.toml              # Dependências e configurações
-├── uv.lock                     # Versões fixadas das dependências
+├── tests/                         # Testes automatizados
+│
+├── .streamlit/
+│   └── config.toml                # Configurações do Streamlit
+│
 ├── README.md
-└── LICENSE
+├── LICENSE
+├── pytest.ini
+├── pyproject.toml
+└── uv.lock
 ```
 
 Os bancos DuckDB são gerados localmente durante o processamento e não são versionados no Git.
@@ -211,19 +220,19 @@ uv run python -m pipeline.marts
 ### 4. Executar o dashboard
 
 ```bash
-uv run streamlit run app.py
+uv run streamlit run dashboard/app.py
 ```
 
 ### 5. Gerar o relatório HTML
 
 ```bash
-uv run python relatorio.py
+uv run python -m reports.relatorio
 ```
 
 ### 6. Executar os testes automatizados
 
 ```bash
-uv run pytest --cov
+uv run pytest
 ```
 
 ## Testes e qualidade
@@ -241,7 +250,7 @@ A execução dos testes utiliza Pytest, com acompanhamento da cobertura de códi
 
 ## Reprodutibilidade
 
-Para reproduzir a análise, é necessário disponibilizar os arquivos de dados de origem na pasta `raw/` e executar as etapas do pipeline na ordem indicada.
+Para reproduzir a análise, é necessário disponibilizar os arquivos de dados de origem na pasta `data/raw/` e executar as etapas do pipeline na ordem indicada.
 
 Os arquivos SQL documentam as consultas utilizadas para construir as tabelas analíticas e os indicadores apresentados no dashboard.
 

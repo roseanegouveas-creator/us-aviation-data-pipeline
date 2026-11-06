@@ -10,7 +10,7 @@ importam este módulo.
 D1. CAMINHOS
     - aviation.duckdb é resolvido a partir da localização deste arquivo
       (pipeline/db.py) e fica na raiz do projeto, um nível acima de pipeline/.
-    - A pasta de arquivos originais é `Banco/` na raiz do projeto
+    - A pasta de arquivos originais é `data/raw/` na raiz do projeto.
       (decisão do usuário: a estrutura existente usa Banco/, não Raw/).
     Motivo: executar um script a partir de outra pasta não pode criar um
     banco vazio no local errado.
@@ -58,7 +58,7 @@ import pandas as pd
 
 RAIZ_PROJETO = Path(__file__).resolve().parent.parent
 CAMINHO_BANCO = RAIZ_PROJETO / "aviation.duckdb"
-PASTA_RAW = RAIZ_PROJETO / "Banco"
+PASTA_RAW = RAIZ_PROJETO / "data" / "raw"
 
 __all__ = ["PASTA_RAW", "conectar", "criar_schema", "gravar"]
 

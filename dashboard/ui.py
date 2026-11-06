@@ -20,7 +20,7 @@ U6. A interface não executa a ingestão. O banco deve ser reconstruído antes
     de iniciar a UI, usando pipeline.ingestao.
 
 U7. A fonte oficial dos registros de voos do projeto é
-    Banco/flights_2025_sample.csv, carregada em raw.flights_2025.
+    data/raw/flights_2025_sample.csv, carregada em raw.flights_2025.
 
 U8. Utiliza a porta 4213 e abre o navegador automaticamente.
 """
@@ -32,7 +32,7 @@ from pathlib import Path
 
 import duckdb
 
-PASTA_PROJETO = Path(__file__).resolve().parent
+PASTA_PROJETO = Path(__file__).resolve().parent.parent
 
 CAMINHO_BANCO = PASTA_PROJETO / "aviation.duckdb"
 CAMINHO_UI = PASTA_PROJETO / "aviation_ui.duckdb"
@@ -65,7 +65,7 @@ def main() -> None:
         print("US Aviation Data Pipeline")
         print()
         print(f"Banco principal: {CAMINHO_BANCO.name}")
-        print("Fonte dos voos: Banco/flights_2025_sample.csv")
+        print("Fonte dos voos: data/raw/flights_2025_sample.csv")
         print("Tabela de voos: raw.flights_2025")
         print(f"Banco auxiliar: {CAMINHO_UI.name}")
         print(f"Interface: {URL}")

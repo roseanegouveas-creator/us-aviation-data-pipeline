@@ -1,5 +1,5 @@
 [project]
-name = "projeto-teste"
+name = "us-aviation-data-pipeline"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
@@ -19,9 +19,9 @@ dev = [
 [tool.coverage.run]
 source = ["."]
 omit = [
-    "test/*",
-    "app.py",
-    "ui.py",
+    "tests/*",
+    "dashboard/app.py",
+    "dashboard/ui.py",
     ".venv/*"
 ]
 

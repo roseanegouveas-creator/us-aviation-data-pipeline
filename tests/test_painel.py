@@ -14,7 +14,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-import painel
+from dashboard import painel
 
 RAIZ = Path(__file__).resolve().parent.parent
 
@@ -431,7 +431,7 @@ def test_titulos_dos_graficos_seguem_a_numeracao_da_spec():
 
 def test_painel_nao_importa_streamlit():
     resultado = subprocess.run(
-        [sys.executable, "-c", "import sys, painel; print('streamlit' in sys.modules)"],
+        [sys.executable, "-c", "import sys; from dashboard import painel; print('streamlit' in sys.modules)"],
         cwd=RAIZ, env={**os.environ, "PYTHONPATH": str(RAIZ)}, capture_output=True, text=True, check=False,
     )
     assert resultado.returncode == 0, resultado.stderr

@@ -55,10 +55,10 @@ def test_importar_pipeline_db_nao_abre_banco_nem_cria_arquivos(tmp_path):
 
 
 def test_caminho_do_banco_e_resolvido_pela_raiz_do_projeto_e_nao_pela_pasta_atual():
-    # D1: aviation.duckdb fica um nível acima de pipeline/; Banco/ também na raiz.
+    # D1: aviation.duckdb fica um nível acima de pipeline/; data/raw/ também fica na raiz.
     raiz = Path(db.__file__).resolve().parent.parent
     assert db.CAMINHO_BANCO == raiz / "aviation.duckdb"
-    assert db.PASTA_RAW == raiz / "Banco"
+    assert db.PASTA_RAW == raiz / "data" / "raw"
 
 
 def test_modulo_expoe_exatamente_pasta_raw_conectar_criar_schema_e_gravar():

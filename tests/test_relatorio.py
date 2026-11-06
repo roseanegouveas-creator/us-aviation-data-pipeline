@@ -13,8 +13,8 @@ from datetime import datetime
 import duckdb
 import pandas as pd
 
-import painel
-import relatorio
+from dashboard import painel
+from reports import relatorio
 
 ORDEM_IDS = ["g01", "g02", "g03", "g04", "g05", "g06", "g07", "g08", "g09", "g10", "g12"]
 
